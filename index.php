@@ -67,7 +67,7 @@
                 <div class="header-left mr-md-4">
                     <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
                     </a>
-                    <a href="#" class="logo ml-lg-0">
+                    <a href="index.php" class="logo ml-lg-0">
                         <img src="assets/img/logo.png" alt="logo" width="145" height="45"/>
                     </a>
                     <nav class="main-nav">

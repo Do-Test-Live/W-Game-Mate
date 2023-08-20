@@ -1,3 +1,59 @@
+<?php
+session_start();
+require_once('include/dbController.php');
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+if (isset($_POST['login'])) {
+    $email = $db_handle->checkValue($_POST['email']);
+    $password = $db_handle->checkValue($_POST['password']);
+    $log_in = $db_handle->runQuery("select * from user where email = '$email' and password = '$password'");
+    $log_in_no = $db_handle->numRows("select * from user where email = '$email' and password = '$password'");
+    if ($log_in_no == 1) {
+
+        $_SESSION['userid'] = $log_in[0]["id"];
+
+
+        echo "<script>
+                alert('Login Successful');
+                window.location.href='index.php';
+                </script>";
+
+    } else {
+        echo "<script>
+                alert('Something went wrong.');
+                window.location.href='login.php';
+                </script>";
+    }
+}
+
+if (isset($_POST['signup'])) {
+
+    $email = $db_handle->checkValue($_POST['email']);
+    $password = $db_handle->checkValue($_POST['password']);
+    $fname = $db_handle->checkValue($_POST['fname']);
+    $lname = $db_handle->checkValue($_POST['lname']);
+    $phone = $db_handle->checkValue($_POST['phone']);
+    $customer = $db_handle->checkValue($_POST['customer']);
+    $inserted_at = date('Y-m-d h:i:s');
+
+
+    $query = "INSERT INTO `user`(`fname`, `lname`, `email`, `password`, `phone`, `role`, `inserted_at`) VALUES ('$fname','$lname','$email','$password','$phone','$customer','$inserted_at')";
+
+    $insert = $db_handle->insertQuery($query);
+
+    if ($insert) {
+        echo "<script>
+                alert('Signup Successful');
+                window.location.href='login.php';
+                </script>";
+    } else {
+        echo "<script>
+                alert('Something went wrong.');
+                window.location.href='login.php';
+                </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +123,7 @@
                 <div class="header-left mr-md-4">
                     <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
                     </a>
-                    <a href="#" class="logo ml-lg-0">
+                    <a href="index.php" class="logo ml-lg-0">
                         <img src="assets/img/logo.png" alt="logo" width="145" height="45"/>
                     </a>
                     <nav class="main-nav">
@@ -95,7 +151,7 @@
                 </div>
                 <div class="header-right ml-4">
                     <div class="account align-items-center d-sm-show">
-                        <a class="login inline-type d-flex ls-normal" href="#">
+                        <a class="login inline-type d-flex ls-normal" href="login.php">
                             <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
                             <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Sign In
                                     <b class="d-block font-weight-bold ls-25">Account</b>
@@ -167,8 +223,8 @@
                                             <li>
                                                 <div class="banner-fixed menu-banner menu-banner2">
                                                     <figure>
-                                                      <!--  <img src="assets/images/menu/banner-2.jpg" alt="Menu Banner"
-                                                             width="235" height="347"/>-->
+                                                        <!--  <img src="assets/images/menu/banner-2.jpg" alt="Menu Banner"
+                                                               width="235" height="347"/>-->
                                                     </figure>
                                                 </div>
                                             </li>
@@ -205,8 +261,8 @@
                                             <li>
                                                 <div class="menu-banner banner-fixed menu-banner3">
                                                     <figure>
-                                                      <!--  <img src="assets/images/menu/banner-3.jpg" alt="Menu Banner"
-                                                             width="235" height="461"/>-->
+                                                        <!--  <img src="assets/images/menu/banner-3.jpg" alt="Menu Banner"
+                                                               width="235" height="461"/>-->
                                                     </figure>
                                                 </div>
                                             </li>
@@ -334,9 +390,9 @@
                                                 <div class="col-6">
                                                     <div class="banner banner-fixed menu-banner5 br-xs">
                                                         <figure>
-                                                         <!--   <img src="assets/images/menu/banner-5.jpg" alt="Banner"
-                                                                 width="410" height="123"
-                                                                 style="background-color: #D2D2D2;"/>-->
+                                                            <!--   <img src="assets/images/menu/banner-5.jpg" alt="Banner"
+                                                                    width="410" height="123"
+                                                                    style="background-color: #D2D2D2;"/>-->
                                                         </figure>
                                                         <div class="banner-content text-right y-50 mt-0">
                                                             <h4 class="banner-subtitle font-weight-normal text-default text-capitalize">
@@ -354,9 +410,9 @@
                                                 <div class="col-6">
                                                     <div class="banner banner-fixed menu-banner5 br-xs">
                                                         <figure>
-                                                         <!--   <img src="assets/images/menu/banner-6.jpg" alt="Banner"
-                                                                 width="410" height="123"
-                                                                 style="background-color: #9F9888;"/>-->
+                                                            <!--   <img src="assets/images/menu/banner-6.jpg" alt="Banner"
+                                                                    width="410" height="123"
+                                                                    style="background-color: #9F9888;"/>-->
                                                         </figure>
                                                         <div class="banner-content y-50 mt-0">
                                                             <h4 class="banner-subtitle font-weight-normal text-white text-capitalize">
@@ -467,59 +523,79 @@
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label>Username or email address *</label>
-                                                    <input type="text" class="form-control" name="username" id="username" required="">
+                                                    <input type="text" class="form-control" name="email"
+                                                           id="username" required="">
                                                 </div>
                                                 <div class="form-group mb-0">
                                                     <label>Password *</label>
-                                                    <input type="password" class="form-control" name="password" id="password" required="">
+                                                    <input type="password" class="form-control" name="password"
+                                                           id="password" required="">
                                                 </div>
                                                 <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                                    <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1" required="">
+                                                    <input type="checkbox" class="custom-checkbox" id="remember1"
+                                                           name="remember1" required="">
                                                     <label for="remember1">Remember me</label>
-                                                    <a href="#">Last your password?</a>
+                                                    <a href="#">Lost your password?</a>
                                                 </div>
-                                                <button type="submit" name="login" class="btn btn-primary">Sign In</button>
+                                                <button type="submit" name="login" class="btn btn-primary">Sign In
+                                                </button>
                                             </form>
                                         </div>
                                         <div class="tab-pane" id="sign-up">
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label>Your email address *</label>
-                                                    <input type="email" class="form-control" name="email" id="email_1" required="">
+                                                    <input type="email" class="form-control" name="email" id="email_1"
+                                                           required="">
                                                 </div>
                                                 <div class="form-group mb-5">
                                                     <label>Password *</label>
-                                                    <input type="password" class="form-control" name="password" id="password_1" required="">
+                                                    <input type="password" class="form-control" name="password"
+                                                           id="password_1" required="">
                                                 </div>
                                                 <div class="checkbox-content login-vendor">
                                                     <div class="form-group mb-5">
                                                         <label>First Name *</label>
-                                                        <input type="text" class="form-control" name="first-name" id="first-name" required="">
+                                                        <input type="text" class="form-control" name="fname"
+                                                               id="first-name" required="">
                                                     </div>
                                                     <div class="form-group mb-5">
                                                         <label>Last Name *</label>
-                                                        <input type="text" class="form-control" name="last-name" id="last-name" required="">
+                                                        <input type="text" class="form-control" name="lname"
+                                                               id="last-name" required="">
                                                     </div>
                                                     <div class="form-group mb-5">
                                                         <label>Phone Number *</label>
-                                                        <input type="tel" class="form-control" name="phone-number" id="phone-number" required="">
+                                                        <input type="tel" class="form-control" name="phone"
+                                                               id="phone-number" required="">
                                                     </div>
                                                 </div>
                                                 <div class="form-checkbox user-checkbox mt-0">
-                                                    <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer" name="check-customer" value="user" required="" checked>
-                                                    <label for="check-customer" class="check-customer mb-1">I am a user</label>
+                                                    <input type="radio" class="custom-checkbox checkbox-round active"
+                                                           id="check-customer" name="customer" value="user"
+                                                           required="">
+                                                    <label for="check-customer" class="check-customer mb-1">I am a
+                                                        user</label>
                                                     <br>
-                                                    <input type="radio" class="custom-checkbox checkbox-round" id="check-seller" name="check-customer" value="gamer" required="">
+                                                    <input type="radio" class="custom-checkbox checkbox-round"
+                                                           id="check-seller" name="customer" value="gamer"
+                                                           required="" checked>
                                                     <label for="check-seller" class="check-seller">I am a gamer</label>
                                                 </div>
                                                 <p>Your personal data will be used to support your experience
                                                     throughout this website, to manage access to your account,
-                                                    and for other purposes described in our <a href="#" class="text-primary">privacy policy</a>.</p>
+                                                    and for other purposes described in our <a href="#"
+                                                                                               class="text-primary">privacy
+                                                        policy</a>.</p>
                                                 <div class="form-checkbox d-flex align-items-center justify-content-between mb-5">
-                                                    <input type="checkbox" class="custom-checkbox" id="remember" name="remember" required="">
-                                                    <label for="remember" class="font-size-md">I agree to the <a href="#" class="text-primary font-size-md">privacy policy</a></label>
+                                                    <input type="checkbox" class="custom-checkbox" id="remember"
+                                                           name="remember" required="">
+                                                    <label for="remember" class="font-size-md">I agree to the <a
+                                                                href="#" class="text-primary font-size-md">privacy
+                                                            policy</a></label>
                                                 </div>
-                                                <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
+                                                <button type="submit" name="signup" class="btn btn-primary">Sign Up
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -534,73 +610,83 @@
     <!-- End of Main -->
 
 
-<div class="month-category head3 pt-8">
-    <div class="container">
-        <div class="category-wrapper bg-white">
-            <div class="product-wrapper">
-                <div class="row grid cols-xl-5 cols-md-4 cols-sm-3 cols-2 appear-animate" id="products-1">
-                    <div class="grid-item product-wrap shoes">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img13.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img13.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
+    <div class="month-category head3 pt-8">
+        <div class="container">
+            <div class="category-wrapper bg-white">
+                <div class="product-wrapper">
+                    <div class="row grid cols-xl-5 cols-md-4 cols-sm-3 cols-2 appear-animate" id="products-1">
+                        <div class="grid-item product-wrap shoes">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="product-default.html">
+                                        <img src="assets/images/demos/demo14/products/img13.jpg" alt="Product"
+                                             width="300" height="337">
+                                        <img src="assets/images/demos/demo14/products/img13.jpg" alt="Product"
+                                             width="300" height="337">
+                                    </a>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="grid-item product-wrap fashion air-condtioning">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img14.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img14.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
+                        <!-- End of Product Wrap -->
+                        <div class="grid-item product-wrap fashion air-condtioning">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="product-default.html">
+                                        <img src="assets/images/demos/demo14/products/img14.jpg" alt="Product"
+                                             width="300" height="337">
+                                        <img src="assets/images/demos/demo14/products/img14.jpg" alt="Product"
+                                             width="300" height="337">
+                                    </a>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="grid-item product-wrap fashion vacuum">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img15.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img15.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
+                        <!-- End of Product Wrap -->
+                        <div class="grid-item product-wrap fashion vacuum">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="product-default.html">
+                                        <img src="assets/images/demos/demo14/products/img15.jpg" alt="Product"
+                                             width="300" height="337">
+                                        <img src="assets/images/demos/demo14/products/img15.jpg" alt="Product"
+                                             width="300" height="337">
+                                    </a>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="grid-item product-wrap fashion cameras">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img16.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img16.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
+                        <!-- End of Product Wrap -->
+                        <div class="grid-item product-wrap fashion cameras">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="product-default.html">
+                                        <img src="assets/images/demos/demo14/products/img16.jpg" alt="Product"
+                                             width="300" height="337">
+                                        <img src="assets/images/demos/demo14/products/img16.jpg" alt="Product"
+                                             width="300" height="337">
+                                    </a>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="grid-item product-wrap shoes">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img17.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img17.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
+                        <!-- End of Product Wrap -->
+                        <div class="grid-item product-wrap shoes">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="product-default.html">
+                                        <img src="assets/images/demos/demo14/products/img17.jpg" alt="Product"
+                                             width="300" height="337">
+                                        <img src="assets/images/demos/demo14/products/img17.jpg" alt="Product"
+                                             width="300" height="337">
+                                    </a>
+                                </figure>
+                            </div>
                         </div>
+                        <!-- End of Product Wrap -->
+                        <div class="grid-space col-xl-5col col-1"></div>
                     </div>
-                    <!-- End of Product Wrap -->
-                    <div class="grid-space col-xl-5col col-1"></div>
                 </div>
+                <!-- End of Product Wrapper -->
             </div>
-            <!-- End of Product Wrapper -->
         </div>
     </div>
-</div>
 
     <!-- Start of Footer -->
     <?php include('include/footer.php'); ?>
