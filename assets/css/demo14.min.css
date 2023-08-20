@@ -7786,6 +7786,8 @@ body .product-popup {
 .login-popup {
   max-width: 50rem;
   padding: 3.3rem 5rem 2.6rem;
+  margin: auto;
+  background: white;
 }
 .login-popup .nav.nav-tabs .nav-item {
   width: calc(50% - .5rem);
