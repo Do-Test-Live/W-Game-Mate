@@ -11,7 +11,7 @@ class DBController {
     function __construct() {
         if($_SERVER['SERVER_NAME']=="www.gamemate.ngt.hk"||$_SERVER['SERVER_NAME']=="gamemate.ngt.hk"){
             $this->host = "localhost";
-            $this->user = "upnb8u5yepuix";
+            $this->user = "u5elkofbotesn";
             $this->password = "+91iexAy61@)";
             $this->database = "dbzq8t6gaely2n";
         }
