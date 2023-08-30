@@ -185,9 +185,6 @@
                     </li>
                 </ul>
             </div>
-
-           :
-            英雄聯盟, 聯盟戰棋, 特戰英豪, Apex, 絕地求生, 彩虹六號, Among us, Call of duty, Csgo, Minecraft, Overwatch, Fortnite, Dead by Daylight, 魔獸世界, 爐石戰記, GTA 5, 糖豆人, Super Animal Royale, Rust
             <div class="tab-pane" id="categories">
                 <ul class="mobile-menu">
                     <li>
@@ -198,7 +195,7 @@
                             <li>
                                 <a href="#">電腦遊戲</a>
                                 <ul>
-                                    <li><a href="#">英雄聯盟</a></li>
+                                    <li><a href="gamer.php">英雄聯盟</a></li>
                                     <li><a href="#"> 聯盟戰棋</a></li>
                                     <li><a href="#">特戰英豪</a></li>
                                     <li><a href="#">Apex</a></li>
@@ -229,7 +226,7 @@
                             <li>
                                 <a href="#">手機遊戲</a>
                                 <ul>
-                                    <li><a href="#">傳說對決</a>
+                                    <li><a href="gamer.php">傳說對決</a>
                                     </li>
                                     <li><a href="#">激鬥峽谷</a></li>
                                     <li><a href="#">王者榮耀</a></li>
