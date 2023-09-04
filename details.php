@@ -86,6 +86,10 @@
                                         <div class="product-label-group">
                                             <label class="product-label label-discount">100 Fans</label>
                                         </div>
+                                        <div class="product-label-group-new">
+                                            <img src="assets/images/verified.png" alt="Brand"
+                                                 width="105" height="48"/>
+                                        </div>
                                     </div>
                                     <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
                                             'navigation': {
@@ -127,17 +131,9 @@
                             <div class="col-md-6 mb-4 mb-md-6">
                                 <div class="product-details" data-sticky-options="{'minWidth': 767}">
                                     <h1 class="product-title">Gamer Nick Name</h1>
-                                    <h4 style="color: #000000;">Gamer Full Name</h4>
+                                    <h4 style="color: #000000;">Game Name</h4>
                                     <div class="product-bm-wrapper">
-                                        <figure class="brand">
-                                            <img src="assets/images/verified.png" alt="Brand"
-                                                 width="105" height="48"/>
-                                        </figure>
                                         <div class="product-meta">
-                                            <div class="product-categories">
-                                                Game Name:
-                                                <span class="product-category"><a href="#">Mobile Legend</a></span>
-                                            </div>
                                             <div class="product-categories">
                                                 ID:
                                                 <span class="product-category"><a href="#">123456</a></span>
@@ -152,8 +148,12 @@
                                         <del class="old-price">$60.00 <label class="mr-2">per hour</label></del>
                                     </div>
 
-                                    <div>
-                                        <p>User Rating: 4 <a href="#product-tab-reviews" class="rating-reviews">(3 Reviews)</a></p>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width: 80%;"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="#product-tab-reviews" class="rating-reviews">(3 Reviews)</a>
                                     </div>
 
 
@@ -312,7 +312,7 @@
                                                 fields are marked *</p>
                                             <form action="#" method="POST" class="review-form">
                                                 <div class="rating-form">
-                                                    <label for="rating">Your Rating Of This Product :</label>
+                                                    <label for="rating">Your Rating Of This Gamer :</label>
                                                     <span class="rating-stars">
                                                                 <a class="star-1" href="#">1</a>
                                                                 <a class="star-2" href="#">2</a>
@@ -330,20 +330,6 @@
                                                         <option value="1">Very poor</option>
                                                     </select>
                                                 </div>
-                                                <textarea cols="30" rows="6"
-                                                          placeholder="Write Your Review Here..."
-                                                          class="form-control"
-                                                          id="review"></textarea>
-                                                <div class="row gutter-md mt-3">
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Your Name" id="author">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Your Email" id="email_1">
-                                                    </div>
-                                                </div>
                                                 <button type="submit" class="btn btn-dark mt-3">Submit
                                                     Review
                                                 </button>
@@ -352,55 +338,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab tab-nav-boxed tab-nav-outline tab-nav-center">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="show-all">
-                                            <ul class="comments list-style-none">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/1-100x100.png"
-                                                                 alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                            1:54 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                            <span class="ratings"
-                                                                                  style="width: 60%;"></span>
-                                                                    <span
-                                                                            class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>pellentesque habitant morbi tristique senectus
-                                                                et. In dictum non consectetur a erat.
-                                                                Nunc ultrices eros in cursus turpis massa
-                                                                tincidunt ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-1.jpg"
-                                                                                 width="60" height="60"
-                                                                                 alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                 data-zoom-image="assets/images/products/default/review-img-1-800x900.jpg"/>
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>

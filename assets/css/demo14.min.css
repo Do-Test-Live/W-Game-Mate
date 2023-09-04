@@ -1,25 +1,9 @@
 @charset "UTF-8";
-/*
-1. color
-2. config
-3. mixins
-4. plugins
-5. base
-6. components
-7. header
-8. footer
-9. demo
-*/
-/* 1. color */
-/* 2. config */
-/*----------------------------------------
-    Variables
------------------------------------------*/
-/* 3. mixins */
-/* 4. plugins */
-/* -------------------------------------------
-    Swiper Container
----------------------------------------------- */
+
+@font-face {
+  font-family: vermin;
+  src: url('../fonts/Verminvibes.otf');
+}
 .swiper {
   position: relative;
 }
@@ -6611,17 +6595,14 @@ input:-internal-autofill-selected {
   width: 100%;
   min-height: 4.7rem;
   padding: 0.85rem 2rem;
-  border: 1px solid #eee;
   font-size: 1.4rem;
   font-family: Poppins, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #999;
-  background-color: transparent;
+  color: #fff;
+  background-color: #000000;
   border-radius: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: 0;
+  border: unset;
 }
 .form-control::-webkit-input-placeholder {
   color: inherit;
@@ -6877,6 +6858,7 @@ textarea {
   position: relative;
   padding-left: 2.5rem;
   cursor: pointer;
+  color: #fff;
 }
 .custom-checkbox + label::before {
   content: "";
@@ -7788,19 +7770,22 @@ body .product-popup {
   max-width: 50rem;
   padding: 3.3rem 5rem 2.6rem;
   margin: auto;
-  background: white;
+  background: #1e2834de;
 }
 .login-popup .nav.nav-tabs .nav-item {
   width: calc(50% - .5rem);
   margin: 0;
 }
 .login-popup .nav.nav-tabs .nav-item:first-child {
-  margin-right: 1rem;
+  margin-right: 0;
 }
 .login-popup .nav-item .nav-link {
   padding: 1.3rem 0;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   font-weight: 700;
+  color: #fff;
+  font-family: vermin,Sans-serif;
+  letter-spacing: 1px;
 }
 .login-popup .nav-item .nav-link::after {
   border-top-width: 2px;
@@ -7823,6 +7808,7 @@ body .product-popup {
 .login-popup .form-group label {
   display: block;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 .login-popup .form-control {
   min-height: 4.4rem;
@@ -7833,7 +7819,7 @@ body .product-popup {
 }
 .login-popup .form-checkbox a {
   font-size: 1.2rem;
-  color: #a94442;
+  color: #70b3ff;
 }
 .login-popup .btn {
   display: block;
@@ -7846,6 +7832,7 @@ body .product-popup {
 .login-popup #sign-up p {
   margin-bottom: 2.1rem;
   line-height: 1.84;
+  color: #fff;
 }
 .login-popup .social-icon {
   margin-right: 0.8rem;
@@ -8849,7 +8836,25 @@ body .product-popup {
           align-items: flex-start;
   position: absolute;
   left: 2rem;
-  top: 2rem;
+  bottom: 2rem;
+  max-width: 11rem;
+  z-index: 1;
+}
+
+.product-label-group-new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  position: absolute;
+  right: 0;
+  bottom: 2rem;
   max-width: 11rem;
   z-index: 1;
 }
@@ -9639,8 +9644,12 @@ body .product-popup {
     height: 3rem;
   }
   .product:not(.product-list) .product-label-group {
-    top: 1rem;
+    bottom: 1rem;
     left: 1rem;
+  }
+  .product:not(.product-list) .product-label-group-new {
+    bottom: 1rem;
+    right: 0;
   }
   .product:not(.product-list) .product-action-vertical {
     top: 1rem;
@@ -10664,7 +10673,7 @@ body .product-popup {
     Tab
 ---------------------------------------------- */
 .tab-content {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .nav-tabs {
@@ -10673,13 +10682,14 @@ body .product-popup {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border-bottom: 1px solid #eee;
   color: #333;
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-item .nav-link.active,
 .nav-tabs .nav-item:hover .nav-link {
-  color: #7705e7;
+  color: #fff;
+  background: #7805e8;
+  font-family: vermin,Sans-serif;
 }
 
 .nav-link {
@@ -13939,6 +13949,7 @@ body .product-popup {
 }
 .header-search.hs-round.hs-expanded .form-control {
   border-radius: 0;
+  background: #fff;
 }
 
 .dir-up.hs-toggle .input-wrapper {

@@ -78,12 +78,35 @@
             </div>
             <div class="header-right ml-4">
                 <div class="account align-items-center d-sm-show">
-                    <a class="login inline-type d-flex ls-normal" href="login.php">
-                        <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
-                        <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Sign In
+                    <?php
+                    if (isset($_SESSION['userid'])) {
+                        $customer_id = $_SESSION['userid'];
+                        $fetch_customer = $db_handle->runQuery("select * from user where id = '$customer_id'");
+                        ?>
+                        <a class="login inline-type d-flex ls-normal" href="profile.php">
+                            <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
+                            <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Welcome
+                                    <b class="d-block font-weight-bold ls-25"><?php echo $fetch_customer[0]['fname'];?></b>
+                                </span>
+                        </a>
+                        <a class="login inline-type d-flex ls-normal ml-5" href="logout.php">
+                            <i class="w-icon-logout d-flex align-items-center justify-content-center br-50"></i>
+                            <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">
+                                    <b class="d-block font-weight-bold ls-25">Logout</b>
+                                </span>
+                        </a>
+                        <?php
+                    } else{
+                        ?>
+                        <a class="login inline-type d-flex ls-normal" href="login.php">
+                            <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
+                            <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Sign In
                                     <b class="d-block font-weight-bold ls-25">Account</b>
                                 </span>
-                    </a>
+                        </a>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <span class="divider mr-6 d-xl-show"></span>
                 <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
