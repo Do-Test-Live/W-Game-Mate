@@ -1,8 +1,14 @@
-<!DOCTYPE html>
+<?php
+session_start();
+require_once('include/dbController.php');
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+
+$id = $_GET['id'];
+$fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '$id'");
+
+?><!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from portotheme.com/html/wolmart/details.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Aug 2023 08:26:25 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -15,7 +21,7 @@
 <body>
 <div class="page-wrapper">
     <!-- Start of Header -->
-    <?php include ('include/header_inner.php');?>
+    <?php include('include/header_inner.php'); ?>
     <!-- End of Header -->
 
 
@@ -38,48 +44,20 @@
                                             }
                                         }">
                                         <div class="swiper-wrapper row cols-1 gutter-no">
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/1-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/1-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="800" height="900">
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/2-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/2-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="488" height="549">
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/3-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/3-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="800" height="900">
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/4-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/4-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="800" height="900">
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/5-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/5-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="800" height="900">
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <figure class="product-image">
-                                                    <img src="assets/images/products/featured/6-800x900.jpg"
-                                                         data-zoom-image="assets/images/products/featured/6-800x900.jpg"
-                                                         alt="Alarm Clock With Lamp" width="800" height="900">
-                                                </figure>
-                                            </div>
+                                            <?php
+                                            $image = explode(',', $fetch_data[0]['profile_image']);
+                                            foreach ($image as $img) {
+                                                ?>
+                                                <div class="swiper-slide">
+                                                    <figure class="product-image">
+                                                        <img src="<?php echo $img; ?>"
+                                                             data-zoom-image="<?php echo $img; ?>"
+                                                             alt="" width="800" height="900">
+                                                    </figure>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <button class="swiper-button-next"></button>
                                         <button class="swiper-button-prev"></button>
@@ -98,30 +76,17 @@
                                             }
                                         }">
                                         <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/1-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/2-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/3-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/4-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/5-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
-                                            <div class="product-thumb swiper-slide">
-                                                <img src="assets/images/products/featured/6-800x900.jpg"
-                                                     alt="Product Thumb" width="800" height="900">
-                                            </div>
+                                            <?php
+                                            $image = explode(',', $fetch_data[0]['profile_image']);
+                                            foreach ($image as $img) {
+                                                ?>
+                                                <div class="product-thumb swiper-slide">
+                                                    <img src="<?php echo $img; ?>"
+                                                         alt="" width="800" height="900">
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <button class="swiper-button-next"></button>
                                         <button class="swiper-button-prev"></button>
@@ -130,8 +95,8 @@
                             </div>
                             <div class="col-md-6 mb-4 mb-md-6">
                                 <div class="product-details" data-sticky-options="{'minWidth': 767}">
-                                    <h1 class="product-title">Gamer Nick Name</h1>
-                                    <h4 style="color: #000000;">Game Name</h4>
+                                    <h1 class="product-title"><?php echo $fetch_data[0]['nick_name'];?></h1>
+                                    <h4 style="color: #000000;"><?php echo $fetch_data[0]['game_name'];?></h4>
                                     <div class="product-bm-wrapper">
                                         <div class="product-meta">
                                             <div class="product-categories">
@@ -144,8 +109,8 @@
                                     <hr class="product-divider">
 
                                     <div class="product-price">
-                                        <ins class="new-price">$30.00 <label class="mr-2">per hour</label></ins>
-                                        <del class="old-price">$60.00 <label class="mr-2">per hour</label></del>
+                                        <ins class="new-price"><?php echo $fetch_data[0]['price'];?> <label class="mr-2"><?php echo $fetch_data[0]['price_unit'];?></label></ins>
+                                        <!--<del class="old-price">$60.00 <label class="mr-2">per hour</label></del>-->
                                     </div>
 
                                     <div class="ratings-container">
@@ -168,7 +133,7 @@
                                     <p>Skill Information: </p>
                                     <div id="player-container">
                                         <audio controls>
-                                            <source src="https://cldup.com/qR72ozoaiQ.mp3" type="audio/mpeg">
+                                            <source src="<?php echo $fetch_data[0]['audio_file'];?>" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
                                     </div>
@@ -395,7 +360,7 @@
     }
 
     controlBtn.addEventListener("click", playPause);
-    track.addEventListener("ended", function() {
+    track.addEventListener("ended", function () {
         controlBtn.className = "play";
     });
 </script>

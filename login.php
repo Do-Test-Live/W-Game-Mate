@@ -10,11 +10,17 @@ if (isset($_POST['login'])) {
     $log_in_no = $db_handle->numRows("select * from user where email = '$email' and password = '$password'");
     if ($log_in_no == 1) {
         $_SESSION['userid'] = $log_in[0]["id"];
-        echo "<script>
+        if($log_in[0]['role'] == 'gamer'){
+            echo "<script>
+                alert('Login Successful');
+                window.location.href='gamer_profile.php';
+                </script>";
+        }else{
+            echo "<script>
                 alert('Login Successful');
                 window.location.href='index.php';
                 </script>";
-
+        }
     } else {
         echo "<script>
                 alert('Something went wrong.');
