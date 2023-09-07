@@ -6,22 +6,37 @@ date_default_timezone_set("Asia/Hong_Kong");
 if (isset($_POST['login'])) {
     $email = $db_handle->checkValue($_POST['email']);
     $password = $db_handle->checkValue($_POST['password']);
-    $log_in = $db_handle->runQuery("select * from user where email = '$email' and password = '$password'");
-    $log_in_no = $db_handle->numRows("select * from user where email = '$email' and password = '$password'");
-    if ($log_in_no == 1) {
-        $_SESSION['userid'] = $log_in[0]["id"];
-        if($log_in[0]['role'] == 'gamer'){
-            echo "<script>
+    $log_in = $db_handle->runQuery("select * from gamer where email = '$email' and password = '$password'");
+    $log_in_no = $db_handle->numRows("select * from gamer where email = '$email' and password = '$password'");
+    if($log_in){
+        if ($log_in_no == 1) {
+            $s = $log_in[0]['status'];
+            if($s == '1'){
+                $_SESSION['userid'] = $log_in[0]["id"];
+                if($log_in[0]['role'] == 'gamer'){
+                    echo "<script>
                 alert('Login Successful');
                 window.location.href='gamer_profile.php';
                 </script>";
-        }else{
-            echo "<script>
+                }else{
+                    echo "<script>
                 alert('Login Successful');
                 window.location.href='index.php';
                 </script>";
+                }
+            } else{
+                echo "<script>
+                alert('Your account is not approved yet!');
+                window.location.href='login.php';
+                </script>";
+            }
+        } else {
+            echo "<script>
+                alert('Something went wrong.');
+                window.location.href='login.php';
+                </script>";
         }
-    } else {
+    } else{
         echo "<script>
                 alert('Something went wrong.');
                 window.location.href='login.php';
@@ -108,9 +123,6 @@ if (isset($_POST['signup'])) {
                                                            id="password" required="">
                                                 </div>
                                                 <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                                    <input type="checkbox" class="custom-checkbox" id="remember1"
-                                                           name="remember1" required="">
-                                                    <label for="remember1">Remember me</label>
                                                     <a href="#">Lost your password?</a>
                                                 </div>
                                                 <button type="submit" name="login" class="btn btn-primary">Sign In

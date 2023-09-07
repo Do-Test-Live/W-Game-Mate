@@ -34,7 +34,7 @@
                 <!-- End of Dropdown Menu -->
                 <span class="divider d-lg-show"></span>
                 <a href="#" class="d-lg-show">Blog</a>
-                <a href="#" class="d-lg-show">Become a Vendor</a>
+                <a href="gamer_signup.php">Signup as Gamer</a>
                 <a href="#" class="d-lg-show">About Us</a>
                 <a href="#" class="d-lg-show">
                     <i class="w-icon-exclamation-circle"></i>
@@ -81,12 +81,12 @@
                     <?php
                     if (isset($_SESSION['userid'])) {
                         $customer_id = $_SESSION['userid'];
-                        $fetch_customer = $db_handle->runQuery("select * from user where id = '$customer_id'");
+                        $fetch_customer = $db_handle->runQuery("select * from gamer where id = '$customer_id'");
                         ?>
                         <a class="login inline-type d-flex ls-normal" href="gamer_profile.php">
                             <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
                             <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Welcome
-                                    <b class="d-block font-weight-bold ls-25"><?php echo $fetch_customer[0]['fname'];?></b>
+                                    <b class="d-block font-weight-bold ls-25"><?php echo $fetch_customer[0]['full_name_cn'];?></b>
                                 </span>
                         </a>
                         <a class="login inline-type d-flex ls-normal ml-5" href="logout.php">

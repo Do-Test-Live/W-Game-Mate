@@ -18,44 +18,11 @@ if (isset($_POST['submit_profile'])) {
     $price = $db_handle->checkValue($_POST['price']);
     $price_unit = $db_handle->checkValue($_POST['price_unit']);
     $inserted_at = date("Y-m-d H:i:s");
-    $audio = '';
 
-    if (!empty($_FILES['audio']['name'])) {
-        $RandomAccountNumber = mt_rand(1, 99999);
-        $file_name = $RandomAccountNumber . "_" . $_FILES['audio']['name'];
-        $file_size = $_FILES['audio']['size'];
-        $file_tmp = $_FILES['audio']['tmp_name'];
 
-        $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        move_uploaded_file($file_tmp, "assets/audio/" . $file_name);
-        $audio = "assets/audio/" . $file_name;
-    }
 
-    $image='';
-    $arr = array();
-    if (!empty($_FILES['profile_image']['name'][0])) {
-        $RandomAccountNumber = mt_rand(1, 99999);
 
-        foreach ($_FILES['profile_image']['name'] as $key => $tmp_name) {
-
-            $file_name = $RandomAccountNumber.$key."_" . $_FILES['profile_image']['name'][$key];
-            $file_size = $_FILES['profile_image']['size'][$key];
-            $file_tmp = $_FILES['profile_image']['tmp_name'][$key];
-            $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-
-            if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
-                $products_image = '';
-            } else {
-                move_uploaded_file($file_tmp, "assets/gamer_profile/" .$file_name);
-                $arr[] = "assets/gamer_profile/" . $file_name;
-            }
-        }
-        $image = implode(',', $arr);
-    } else {
-        $image = '';
-    }
-
-    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`game_type`,`nick_name`,`gamer_id`, `game_name`, `game_mood`, `price`, `price_unit`, `audio_file`, `inserted_at`,`profile_image`) VALUES ('$game_type','$nick_name','$gamerid','$game','$game_mode','$price','$price_unit','$audio','$inserted_at','$image')");
+    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`game_type`,`nick_name`, `game_name`, `game_mood`, `price`, `price_unit`, `inserted_at`) VALUES ('$game_type','$nick_name','$game','$game_mode','$price','$price_unit','$inserted_at')");
 
     if($insert){
         echo "
@@ -81,7 +48,7 @@ if (isset($_POST['submit_profile'])) {
     <?php include('include/css.php'); ?>
 </head>
 
-<body>
+<body class="top-two-section">
 <div class="page-wrapper">
     <h1 class="d-none">Wolmart - Responsive Marketplace HTML Template</h1>
     <!-- Start of Header -->
@@ -93,13 +60,7 @@ if (isset($_POST['submit_profile'])) {
     <main class="main" style="margin-top: -1px;">
 
         <!-- Start of Page Content -->
-        <div class="page-content mb-10">
-            <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6"
-                 style="background-image: url(assets/images/shop/banner2.jpg); background-color: #FFC74E;">
-                <div class="container banner-content">
-
-                </div>
-            </div>
+        <div class="page-content mb-10 mt-10">
             <!-- End of Shop Banner -->
             <div class="container-fluid">
                 <!-- Start of Shop Content -->
@@ -117,31 +78,31 @@ if (isset($_POST['submit_profile'])) {
                                                             <input type="hidden" name="gamer_id"
                                                                    value="<?php echo $_SESSION['userid']; ?>">
                                                             <div class="form-group">
-                                                                <label>Nick Name</label>
+                                                                <label>暱稱</label>
                                                                 <input type="text" class="form-control" name="nick_name"
                                                                        required="">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Game Type</label>
+                                                                <label>遊戲類型</label>
                                                                 <select id="gameType" class="form-control"
                                                                         name="game_type" required>
-                                                                    <option selected disabled>Choose Game Type</option>
+                                                                    <option selected disabled>選擇遊戲類型</option>
                                                                     <option value="電腦遊戲">電腦遊戲</option>
                                                                     <option value="手機遊戲">手機遊戲</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Choose Game</label>
+                                                                <label>選擇遊戲</label>
                                                                 <select id="game" class="form-control" name="game"
                                                                         required>
-                                                                    <option selected disabled>Choose Game</option>
+                                                                    <option selected disabled>選擇遊戲</option>
                                                                 </select>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label>Choose Game Mode</label>
+                                                                <label>選擇遊戲模式</label>
                                                                 <select class="form-control" name="game_mode" required>
-                                                                    <option selected disabled>Choose Game Mode</option>
+                                                                    <option selected disabled>選擇遊戲模式</option>
                                                                     <option value="標準模式">標準模式</option>
                                                                     <option value="單雙積分">單雙積分</option>
                                                                     <option value="彈性積分">彈性積分</option>
@@ -153,28 +114,15 @@ if (isset($_POST['submit_profile'])) {
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label>Audio</label>
-                                                                <input type="file" class="form-control" name="audio"
-                                                                       required="" accept="audio/*">
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label>Profile Images (Can Select Multiple Image. Recommended Size 800x900)</label>
-                                                                <input type="file" class="form-control" name="profile_image[]"
-                                                                       required="" accept="image/*" multiple>
-                                                            </div>
-
-
-                                                            <div class="form-group">
-                                                                <label>Price</label>
+                                                                <label>價格</label>
                                                                 <input type="number" class="form-control" name="price"
                                                                        required="">
                                                             </div>
 
                                                             <div class="form-group mb-0">
-                                                                <label>Price Unit</label>
+                                                                <label>價格單位</label>
                                                                 <select class="form-control" name="price_unit" required>
-                                                                    <option selected disabled>Choose Game Mode</option>
+                                                                    <option selected disabled>選擇價格單位</option>
                                                                     <option value="局">局</option>
                                                                     <option value="半小時">半小時</option>
                                                                     <option value="小時">小時</option>
@@ -183,7 +131,7 @@ if (isset($_POST['submit_profile'])) {
                                                             </div>
 
                                                             <button type="submit" name="submit_profile"
-                                                                    class="btn btn-primary mt-3">Submit Profile
+                                                                    class="btn btn-primary mt-3">建立個人資料
                                                             </button>
                                                         </form>
                                                     </div>
