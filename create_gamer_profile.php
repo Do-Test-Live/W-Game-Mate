@@ -22,7 +22,7 @@ if (isset($_POST['submit_profile'])) {
 
 
 
-    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`game_type`,`nick_name`, `game_name`, `game_mood`, `price`, `price_unit`, `inserted_at`) VALUES ('$game_type','$nick_name','$game','$game_mode','$price','$price_unit','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`gamer_id`,`game_type`,`nick_name`, `game_name`, `game_mood`, `price`, `price_unit`, `inserted_at`) VALUES ('$gamerid','$game_type','$nick_name','$game','$game_mode','$price','$price_unit','$inserted_at')");
 
     if($insert){
         echo "

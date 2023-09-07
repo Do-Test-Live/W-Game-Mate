@@ -5,9 +5,10 @@ $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 
 $id = $_GET['id'];
-$fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '$id'");
+$fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile`,`gamer` WHERE gamer_profile.id = '$id' and gamer_profile.gamer_id = gamer.id");
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +46,7 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '
                                         }">
                                         <div class="swiper-wrapper row cols-1 gutter-no">
                                             <?php
-                                            $image = explode(',', $fetch_data[0]['profile_image']);
+                                            $image = explode(',', $fetch_data[0]['images']);
                                             foreach ($image as $img) {
                                                 ?>
                                                 <div class="swiper-slide">
@@ -77,7 +78,7 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '
                                         }">
                                         <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                             <?php
-                                            $image = explode(',', $fetch_data[0]['profile_image']);
+                                            $image = explode(',', $fetch_data[0]['images']);
                                             foreach ($image as $img) {
                                                 ?>
                                                 <div class="product-thumb swiper-slide">
@@ -101,7 +102,7 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '
                                         <div class="product-meta">
                                             <div class="product-categories">
                                                 ID:
-                                                <span class="product-category"><a href="#">123456</a></span>
+                                                <span class="product-category"><a href="#"><?php echo $fetch_data[0]['gamer_id'];?></a></span>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +110,7 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '
                                     <hr class="product-divider">
 
                                     <div class="product-price">
-                                        <ins class="new-price"><?php echo $fetch_data[0]['price'];?> <label class="mr-2"><?php echo $fetch_data[0]['price_unit'];?></label></ins>
+                                        <ins class="new-price">HKD <?php echo $fetch_data[0]['price'];?> <label class="mr-2"><?php echo $fetch_data[0]['price_unit'];?></label></ins>
                                         <!--<del class="old-price">$60.00 <label class="mr-2">per hour</label></del>-->
                                     </div>
 
@@ -133,7 +134,7 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `id` = '
                                     <p>Skill Information: </p>
                                     <div id="player-container">
                                         <audio controls>
-                                            <source src="<?php echo $fetch_data[0]['audio_file'];?>" type="audio/mpeg">
+                                            <source src="<?php echo $fetch_data[0]['audio'];?>" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
                                     </div>

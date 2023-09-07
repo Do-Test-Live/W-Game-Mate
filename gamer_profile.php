@@ -56,8 +56,8 @@ if (!isset($_SESSION['userid'])) {
                         </div>
                         <div class="product-wrapper row cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
                             <?php
-                            $fetch_profile = $db_handle->runQuery("SELECT * FROM `gamer_profile` WHERE `gamer_id` = {$_SESSION['userid']}");
-                            $no_fetch_profile = $db_handle->numRows("SELECT * FROM `gamer_profile` WHERE `gamer_id` = {$_SESSION['userid']}");
+                            $fetch_profile = $db_handle->runQuery("SELECT * FROM `gamer`,`gamer_profile` WHERE gamer_profile.gamer_id = gamer.id and gamer.id = {$_SESSION['userid']}");
+                            $no_fetch_profile = $db_handle->numRows("SELECT * FROM `gamer`,`gamer_profile` WHERE gamer_profile.gamer_id = gamer.id and gamer.id = {$_SESSION['userid']}");
                             if ($no_fetch_profile > 0) {
                                 for ($i = 0; $i < $no_fetch_profile; $i++) {
                                     ?>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['userid'])) {
                                         <div class="product text-center">
                                             <figure class="product-media">
                                                 <?php
-                                                $image = explode(',', $fetch_profile[$i]['profile_image']);
+                                                $image = explode(',', $fetch_profile[$i]['images']);
                                                 ?>
                                                 <a href="details.php?id=<?php echo $fetch_profile[$i]['id'];?>">
                                                     <img src="<?php echo $image[0]; ?>" alt="Product" width="300"
@@ -73,29 +73,18 @@ if (!isset($_SESSION['userid'])) {
                                                 </a>
                                                 <div class="product-action-horizontal">
                                                     <audio controls>
-                                                        <source src="<?php echo $fetch_profile[$i]['audio_file']; ?>"
+                                                        <source src="<?php echo $fetch_profile[$i]['audio']; ?>"
                                                                 type="audio/mpeg">
                                                         Your browser does not support the audio element.
                                                     </audio>
                                                 </div>
                                             </figure>
                                             <div class="product-details">
-                                                <?php
-                                                if($fetch_profile[$i]['status'] == 0){
-                                                    ?>
-                                                    <label class="product-label label-discount">Pending</label>
-                                                    <?php
-                                                } else{
-                                                    ?>
-                                                    <label class="product-label label-discount">Accepted</label>
-                                                    <?php
-                                                }
-                                                ?>
                                                 <div class="product-cat">
                                                     <a href="details.php?id=<?php echo $fetch_profile[$i]['id'];?>"><?php echo $fetch_profile[$i]['game_name']; ?></a>
                                                 </div>
                                                 <h3 class="product-name">
-                                                    <a href="details.php?id=<?php echo $fetch_profile[$i]['id'];?>"><?php echo $user_info[0]['fname']; ?> <?php echo $user_info[0]['lname']; ?></a>
+                                                    <a href="details.php?id=<?php echo $fetch_profile[$i]['id'];?>"><?php echo $fetch_profile[0]['full_name_cn']; ?></a>
                                                 </h3>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
@@ -106,7 +95,7 @@ if (!isset($_SESSION['userid'])) {
                                                 </div>
                                                 <div class="product-pa-wrapper">
                                                     <div class="product-price">
-                                                        <?php echo $fetch_profile[$i]['price'];?> <?php echo $fetch_profile[$i]['price_unit'];?>
+                                                        HKD <?php echo $fetch_profile[$i]['price'];?> <?php echo $fetch_profile[$i]['price_unit'];?>
                                                     </div>
                                                 </div>
                                             </div>

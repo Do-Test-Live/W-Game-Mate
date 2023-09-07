@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once('include/dbController.php');
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,42 +59,53 @@
                                 </div>
                             </nav>
                             <div class="product-wrapper row cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-                                <div class="product-wrap">
-                                    <div class="product text-center">
-                                        <figure class="product-media">
-                                            <a href="details.php">
-                                                <img src="assets/images/products/featured/1-800x900.jpg" alt="Product" width="300"
-                                                    height="338" />
-                                            </a>
-                                            <div class="product-action-horizontal">
-                                                <audio controls>
-                                                    <source src="https://cldup.com/qR72ozoaiQ.mp3" type="audio/mpeg">
-                                                    Your browser does not support the audio element.
-                                                </audio>
-                                            </div>
-                                        </figure>
-                                        <div class="product-details">
-                                            <div class="product-cat">
-                                                <a href="details.php">Mobile Legend</a>
-                                            </div>
-                                            <h3 class="product-name">
-                                                <a href="details.php">Gamer Name</a>
-                                            </h3>
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
+                                <?php
+                                $fetch_gamer_profile = $db_handle->runQuery("SELECT * FROM `gamer`,`gamer_profile` WHERE gamer_profile.gamer_id = gamer.id");
+                                $no_fetch_gamer_profile = $db_handle->numRows("SELECT * FROM `gamer`,`gamer_profile` WHERE gamer_profile.gamer_id = gamer.id");
+                                for($i=0; $i < $no_fetch_gamer_profile; $i++){
+                                    ?>
+                                    <div class="product-wrap">
+                                        <div class="product text-center">
+                                            <figure class="product-media">
+                                                <a href="details.php?id=<?php echo $fetch_gamer_profile[$i]['id'];?>">
+                                                    <?php
+                                                    $image = explode(',', $fetch_gamer_profile[$i]['images']);
+                                                    ?>
+                                                    <img src="<?php echo $image[0]; ?>" alt="Product" width="300"
+                                                         height="338" />
+                                                </a>
+                                                <div class="product-action-horizontal">
+                                                    <audio controls>
+                                                        <source src="<?php echo $fetch_gamer_profile[$i]['audio']; ?>" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
                                                 </div>
-                                                <a href="details.php" class="rating-reviews">(3 reviews)</a>
-                                            </div>
-                                            <div class="product-pa-wrapper">
-                                                <div class="product-price">
-                                                    $30 per hour
+                                            </figure>
+                                            <div class="product-details">
+                                                <div class="product-cat">
+                                                    <a href="details.php?id=<?php echo $fetch_gamer_profile[$i]['id'];?>""><?php echo $fetch_gamer_profile[$i]['game_name']; ?></a>
+                                                </div>
+                                                <h3 class="product-name">
+                                                    <a href="details.php?id=<?php echo $fetch_gamer_profile[$i]['id'];?>""><?php echo $fetch_gamer_profile[0]['full_name_cn']; ?></a>
+                                                </h3>
+                                                <div class="ratings-container">
+                                                    <div class="ratings-full">
+                                                        <span class="ratings" style="width: 100%;"></span>
+                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    </div>
+                                                    <a href="details.php?id=<?php echo $fetch_gamer_profile[$i]['id'];?>"" class="rating-reviews">(3 reviews)</a>
+                                                </div>
+                                                <div class="product-pa-wrapper">
+                                                    <div class="product-price">
+                                                        HKD <?php echo $fetch_gamer_profile[$i]['price'];?> <?php echo $fetch_gamer_profile[$i]['price_unit'];?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
 
                             <div class="toolbox toolbox-pagination justify-content-between">
