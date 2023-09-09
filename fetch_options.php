@@ -5,7 +5,7 @@ $db_handle = new DBController();
 $selectedGameType = $_POST['gameType'];
 $options='';
 if($selectedGameType == '電腦遊戲'){
-    $query = $db_handle->runQuery("select * from pc_game order by id asc");
+    $query = $db_handle->runQuery("select * from pc_game");
     $no_query = $db_handle->numRows("select * from pc_game");
         for($i=0; $i < $no_query; $i++){
             $options .= '<option value="' . $query[$i]['game_name'] . '">' . $query[$i]['game_name'] . '</option>';

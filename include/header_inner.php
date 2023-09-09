@@ -221,200 +221,42 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-electronics"></i>Lorem Ipsum
-                                    </a>
-                                    <ul class="megamenu">
-                                        <li>
-                                            <h4 class="menu-title">Lorem Ipsum</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                            </ul>
-                                            <h4 class="menu-title mt-1">Lorem Ipsum</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <h4 class="menu-title">Lorem Ipsum</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                            </ul>
-                                            <h4 class="menu-title mt-1">Lorem Ipsum</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                                <li><a href="#">Lorem Ipsum</a>
-                                                </li>
-                                                <li><a href="#">Lorem Ipsum</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <div class="menu-banner banner-fixed menu-banner4">
-                                                <figure>
-                                                    <!--<img src="assets/images/menu/banner-4.jpg" alt="Menu Banner"
-                                                         width="235" height="433"/>-->
-                                                </figure>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="w-icon-sofa"></i>Lorem Ipsum
-                                    </a>
-                                    <ul class="megamenu type2">
-                                        <li class="row">
-                                            <div class="col-md-3 col-lg-3 col-6">
-                                                <h4 class="menu-title">Lorem Ipsum</h4>
-                                                <hr class="divider"/>
-                                                <ul>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-3 col-lg-3 col-6">
-                                                <h4 class="menu-title">Lorem Ipsum</h4>
-                                                <hr class="divider"/>
-                                                <ul>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-3 col-lg-3 col-6">
-                                                <h4 class="menu-title">Lorem Ipsum</h4>
-                                                <hr class="divider"/>
-                                                <ul>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-3 col-lg-3 col-6">
-                                                <h4 class="menu-title">Lorem Ipsum</h4>
-                                                <hr class="divider"/>
-                                                <ul>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                    <li><a href="#">Lorem Ipsum</a>
-                                                    </li>
-                                                    <li><a href="#">Lorem Ipsum</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="row">
-                                            <div class="col-6">
-                                                <div class="banner banner-fixed menu-banner5 br-xs">
-                                                    <figure>
-                                                        <!--   <img src="assets/images/menu/banner-5.jpg" alt="Banner"
-                                                                width="410" height="123"
-                                                                style="background-color: #D2D2D2;"/>-->
-                                                    </figure>
-                                                    <div class="banner-content text-right y-50 mt-0">
-                                                        <h4 class="banner-subtitle font-weight-normal text-default text-capitalize">
-                                                            New Arrivals
-                                                        </h4>
-                                                        <h3 class="banner-title font-weight-bolder text-capitalize ls-normal">
-                                                            Amazing Sofa
-                                                        </h3>
-                                                        <div class="banner-price-info font-weight-normal ls-normal">
-                                                            Starting at <strong>$125.00</strong>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="banner banner-fixed menu-banner5 br-xs">
-                                                    <figure>
-                                                        <!--   <img src="assets/images/menu/banner-6.jpg" alt="Banner"
-                                                                width="410" height="123"
-                                                                style="background-color: #9F9888;"/>-->
-                                                    </figure>
-                                                    <div class="banner-content y-50 mt-0">
-                                                        <h4 class="banner-subtitle font-weight-normal text-white text-capitalize">
-                                                            Best Seller
-                                                        </h4>
-                                                        <h3 class="banner-title font-weight-bolder text-capitalize text-white ls-normal">
-                                                            Chair &amp; Lamp
-                                                        </h3>
-                                                        <div class="banner-price-info font-weight-normal ls-normal text-white">
-                                                            From <strong>$165.00</strong>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="w-icon-toy"></i>Lorem Ipsum
+                                        <i class="w-icon-toy"></i>訂單
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-basketball"></i>Lorem Ipsum
+                                        <i class="w-icon-basketball"></i>錢包
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-heartbeat"></i>Lorem Ipsum
+                                        <i class="w-icon-heartbeat"></i>優惠券
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-camera"></i>Lorem Ipsum
+                                        <i class="w-icon-camera"></i>我要做陪玩
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-furniture"></i>Lorem Ipsum
+                                        <i class="w-icon-furniture"></i>個人資料
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="w-icon-kettle"></i>Lorem Ipsum
+                                        <i class="w-icon-kettle"></i>設置
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                       class="view-all-cats font-weight-bold text-uppercase ls-25">
-                                        View All Categories<i class="w-icon-angle-right"></i>
+                                    <a href="#">
+                                        <i class="w-icon-kettle"></i>聯繫客服
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="w-icon-kettle"></i>登出
                                     </a>
                                 </li>
                             </ul>

@@ -8,7 +8,7 @@ if (!isset($_SESSION['userid'])) {
                 window.location.href='index.php';
                 </script>";
 } else{
-    $user_info = $db_handle->runQuery("select * from user where id = {$_SESSION['userid']}");
+    $user_info = $db_handle->runQuery("select * from gamer where id = {$_SESSION['userid']}");
 }
 
 ?>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['userid'])) {
 
 <body>
 <div class="page-wrapper">
-    <h1 class="d-none">Wolmart - Responsive Marketplace HTML Template</h1>
+    <h1 class="d-none"></h1>
     <!-- Start of Header -->
     <?php include('include/header_inner.php'); ?>
     <!-- End of Header -->

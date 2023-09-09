@@ -40,7 +40,7 @@ if(isset($_POST['login'])){
 	<meta name="author" content="" />
 	<meta name="robots" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Your Company Name</title>
+    <title>Login Game-Mate</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/favicon.png">
 	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">

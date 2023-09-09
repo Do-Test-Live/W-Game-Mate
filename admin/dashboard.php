@@ -17,7 +17,7 @@ if (!isset($_SESSION['admin_id'])) {
 <html lang="en">
 
 <head>
-    <title>Your Company Name</title>
+    <title>Admin Home - Game-Mate</title>
     <!-- Favicon icon -->
     <?php include('include/css.php'); ?>
 </head>
