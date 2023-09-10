@@ -23,7 +23,6 @@ if (isset($_POST['register_gamer'])) {
     $inserted_at = date("Y-m-d H:i:s");
     $audio = '';
 
-    $fetch_user = $db_handle->runQuery("select * from gamer where email = '$email'");
     $no_fetch_user = $db_handle->numRows("select * from gamer where email = '$email'");
     if($no_fetch_user > 0){
         echo "
