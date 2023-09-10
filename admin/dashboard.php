@@ -110,23 +110,30 @@ if (!isset($_SESSION['admin_id'])) {
                                     <?php
                                     $fetch_data = $db_handle->runQuery("select * from gamer order by id desc");
                                     $no_fetch_data = $db_handle->numRows("select * from gamer order by id desc");
-                                    for ($i=0; $i < $no_fetch_data; $i++){
+                                    for ($i = 0; $i < $no_fetch_data; $i++) {
                                         ?>
                                         <tr>
-                                            <td><?php echo $i + 1;?></td>
-                                            <td><?php echo $fetch_data[$i]['full_name_cn'];?></td>
-                                            <td><?php echo $fetch_data[$i]['number'];?></td>
-                                            <td><?php echo $fetch_data[$i]['email'];?></td>
-                                            <td><?php echo $fetch_data[$i]['gamer_id'];?></td>
+                                            <td><?php echo $i + 1; ?></td>
+                                            <td><?php echo $fetch_data[$i]['full_name_cn']; ?></td>
+                                            <td><?php echo $fetch_data[$i]['number']; ?></td>
+                                            <td><?php echo $fetch_data[$i]['email']; ?></td>
+                                            <td><?php echo $fetch_data[$i]['gamer_id']; ?></td>
                                             <td>
                                                 <?php
-                                                if($fetch_data[$i]['status'] == '0'){
+                                                if ($fetch_data[$i]['status'] == '0') {
                                                     ?>
                                                     <span class="badge light badge-danger">Pending</span>
                                                     <?php
-                                                } else{
+                                                } else {
                                                     ?>
                                                     <span class="badge light badge-success">Accepted</span>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($fetch_data[$i]['top_gamer'] == '1') {
+                                                    ?>
+                                                    <span class="badge light badge-success">Top Gamer</span>
                                                     <?php
                                                 }
                                                 ?>
@@ -134,10 +141,32 @@ if (!isset($_SESSION['admin_id'])) {
                                             <td>
                                                 <div class="dropdown ml-auto text-right">
                                                     <div class="btn-link" data-toggle="dropdown">
-                                                        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+                                                        <svg width="24px" height="24px" viewBox="0 0 24 24"
+                                                             version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none"
+                                                               fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24"></rect>
+                                                                <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                                <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                                <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                            </g>
+                                                        </svg>
                                                     </div>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="accept_gamer.php?gamer_id=<?php echo $fetch_data[$i]['id'];?>">Accept Gamer</a>
+                                                        <?php
+                                                        if ($fetch_data[$i]['status'] == '0') {
+                                                            ?>
+                                                            <a class="dropdown-item"
+                                                               href="accept_gamer.php?gamer_id=<?php echo $fetch_data[$i]['id']; ?>">Accept
+                                                                Gamer</a>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        <a class="dropdown-item"
+                                                           href="view_profile.php?gamer_id=<?php echo $fetch_data[$i]['id']; ?>">View
+                                                            Profile</a>
+                                                        <a class="dropdown-item"
+                                                           href="top_gamer.php?gamer_id=<?php echo $fetch_data[$i]['id']; ?>">Change Top Gamer Status</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -189,13 +218,6 @@ if (!isset($_SESSION['admin_id'])) {
         Scripts
     ***********************************-->
 <!-- Required vendors -->
-<script src="vendor/global/global.min.js"></script>
-<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<!-- Datatable -->
-<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="js/plugins-init/datatables.init.js"></script>
-<script src="js/custom.min.js"></script>
-<script src="js/deznav-init.js"></script>
-<script src="js/demo.js"></script>
+<?php include ('include/js.php');?>
 </body>
 </html>

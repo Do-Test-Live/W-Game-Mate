@@ -8,6 +8,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/favicon.png">
 <!-- Datatable -->
 <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="vendor/lightgallery/css/lightgallery.min.css" rel="stylesheet">
 <!-- Custom Stylesheet -->
 <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
