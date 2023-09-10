@@ -141,139 +141,28 @@ date_default_timezone_set("Asia/Hong_Kong");
                         }
                     }}">
                 <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
-                                         height="337">
-                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
-                                         height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                    <?php
+                    $fetch_top_gamer = $db_handle->runQuery("SELECT * from gamer where top_gamer = '1' ORDER BY rand()");
+                    $no_fetch_top_gamer = $db_handle->numRows("SELECT * from gamer where top_gamer = '1' ORDER BY rand()");
+                    for($i = 0; $i < $no_fetch_top_gamer; $i++){
+                        ?>
+                        <div class="swiper-slide product-wrap">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <?php
+                                    $image = explode(',',$fetch_top_gamer[$i]['images']);
+                                    ?>
+                                    <a href="#">
+                                        <img src="<?php echo $image[0];?>" alt="Product" width="300"
+                                             height="337">
+                                    </a>
+                                </figure>
+                                <h4 class="head5"><?php echo $fetch_top_gamer[$i]['full_name_cn'];?></h4>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img05.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img05.jpg"  alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
-                                         height="337">
-                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
-                                         height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img05.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img05.jpg"  alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
-                    <!-- End of Product Wrap -->
-                    <div class="swiper-slide product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
-                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
-                                </a>
-                            </figure>
-                            <h4 class="head5">Lorem ipsum</h4>
-                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                     <!-- End of Product Wrap -->
                 </div>
             </div>
