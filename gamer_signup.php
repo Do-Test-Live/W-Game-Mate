@@ -7,6 +7,7 @@ date_default_timezone_set("Asia/Hong_Kong");
 if (isset($_POST['register_gamer'])) {
     $full_name_cn = $db_handle->checkValue($_POST['full_name_cn']);
     $full_name_en = $db_handle->checkValue($_POST['full_name_en']);
+    $nick_name = $db_handle->checkValue($_POST['nick_name']);
     $number = $db_handle->checkValue($_POST['number']);
     $email = $db_handle->checkValue($_POST['email']);
     $sex = $db_handle->checkValue($_POST['sex']);
@@ -22,48 +23,94 @@ if (isset($_POST['register_gamer'])) {
     $inserted_at = date("Y-m-d H:i:s");
     $audio = '';
 
-    if (!empty($_FILES['audio']['name'])) {
-        $RandomAccountNumber = mt_rand(1, 99999);
-        $file_name = $RandomAccountNumber . "_" . $_FILES['audio']['name'];
-        $file_size = $_FILES['audio']['size'];
-        $file_tmp = $_FILES['audio']['tmp_name'];
-
-        $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        move_uploaded_file($file_tmp, "assets/audio/" . $file_name);
-        $audio = "assets/audio/" . $file_name;
-    }
-
-    $image='';
-    $arr = array();
-    if (!empty($_FILES['profile_image']['name'][0])) {
-        $RandomAccountNumber = mt_rand(1, 99999);
-        foreach ($_FILES['profile_image']['name'] as $key => $tmp_name) {
-            $file_name = $RandomAccountNumber.$key."_" . $_FILES['profile_image']['name'][$key];
-            $file_size = $_FILES['profile_image']['size'][$key];
-            $file_tmp = $_FILES['profile_image']['tmp_name'][$key];
-            $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-
-            if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
-                $products_image = '';
-            } else {
-                move_uploaded_file($file_tmp, "assets/gamer_profile/" .$file_name);
-                $arr[] = "assets/gamer_profile/" . $file_name;
-            }
-        }
-        $image = implode(',', $arr);
-    } else {
-        $image = '';
-    }
-
-    $insert = $db_handle->insertQuery("INSERT INTO `gamer` (`full_name_cn`, `full_name_en`, `number`, `email`, `gamer_id`, `audio`, `images`, `password`, `inserted_at`,`other_website`,`social_media`,`other`,`newspaper`,`search_engine`,`advertising`,`introduced`) VALUES ('$full_name_cn','$full_name_en','$number','$email','$gamer_id','$audio','$image','$password','$inserted_at','$other_website','$social_media','$other','$newspaper','$serach_engine','$advertising','$introduced')");
-
-    if($insert){
+    $fetch_user = $db_handle->runQuery("select * from gamer where email = '$email'");
+    $no_fetch_user = $db_handle->numRows("select * from gamer where email = '$email'");
+    if($no_fetch_user > 0){
         echo "
+        <script>
+        alert ('This email is already registered!');
+        window.location.href = 'gamer_signup.php';
+</script>
+        ";
+    } else{
+        if (!empty($_FILES['audio']['name'])) {
+            $RandomAccountNumber = mt_rand(1, 99999);
+            $file_name = $RandomAccountNumber . "_" . $_FILES['audio']['name'];
+            $file_size = $_FILES['audio']['size'];
+            $file_tmp = $_FILES['audio']['tmp_name'];
+
+            $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            move_uploaded_file($file_tmp, "assets/audio/" . $file_name);
+            $audio = "assets/audio/" . $file_name;
+        }
+
+        $image='';
+        $arr = array();
+        if (!empty($_FILES['profile_image']['name'][0])) {
+            $RandomAccountNumber = mt_rand(1, 99999);
+            foreach ($_FILES['profile_image']['name'] as $key => $tmp_name) {
+                $file_name = $RandomAccountNumber.$key."_" . $_FILES['profile_image']['name'][$key];
+                $file_size = $_FILES['profile_image']['size'][$key];
+                $file_tmp = $_FILES['profile_image']['tmp_name'][$key];
+                $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+                if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
+                    $products_image = '';
+                } else {
+                    move_uploaded_file($file_tmp, "assets/gamer_profile/" .$file_name);
+                    $arr[] = "assets/gamer_profile/" . $file_name;
+                }
+            }
+            $image = implode(',', $arr);
+        } else {
+            $image = '';
+        }
+
+        $id_image='';
+        $array = array();
+        if (!empty($_FILES['id_image']['name'][0])) {
+            $RandomAccountNumber = mt_rand(1, 99999);
+            foreach ($_FILES['id_image']['name'] as $key => $tmp_name) {
+                $file_name = $RandomAccountNumber.$key."_" . $_FILES['id_image']['name'][$key];
+                $file_size = $_FILES['id_image']['size'][$key];
+                $file_tmp = $_FILES['id_image']['tmp_name'][$key];
+                $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+                if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
+                    $products_image = '';
+                } else {
+                    move_uploaded_file($file_tmp, "assets/gamer_id/" .$file_name);
+                    $array[] = "assets/gamer_id/" . $file_name;
+                }
+            }
+            $id_image = implode(',', $array);
+        } else {
+            $id_image = '';
+        }
+
+        $ranking_image = '';
+
+        if (!empty($_FILES['ranking_image']['name'])) {
+            $RandomAccountNumber = mt_rand(1, 99999);
+            $file_name = $RandomAccountNumber . "_" . $_FILES['ranking_image']['name'];
+            $file_size = $_FILES['ranking_image']['size'];
+            $file_tmp = $_FILES['ranking_image']['tmp_name'];
+
+            $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            move_uploaded_file($file_tmp, "assets/ranking_image/" . $file_name);
+            $ranking_image = "assets/ranking_image/" . $file_name;
+        }
+
+        $insert = $db_handle->insertQuery("INSERT INTO `gamer` (`full_name_cn`, `full_name_en`, `number`, `email`, `gamer_id`, `audio`, `images`, `password`, `inserted_at`,`other_website`,`social_media`,`other`,`newspaper`,`search_engine`,`advertising`,`introduced`,`nick_name`,`gamer_id_image`,`gamer_ranking_image`) VALUES ('$full_name_cn','$full_name_en','$number','$email','$gamer_id','$audio','$image','$password','$inserted_at','$other_website','$social_media','$other','$newspaper','$serach_engine','$advertising','$introduced','$nick_name','$id_image','$ranking_image')");
+
+        if($insert){
+            echo "
         <script>
         alert('您的請求已提交！管理員將會審查並儘快批准！');
         window.location.href = 'login.php';
 </script>
         ";
+        }
     }
 }
 ?>
@@ -120,6 +167,11 @@ if (isset($_POST['register_gamer'])) {
                                                                        required="">
                                                             </div>
                                                             <div class="form-group">
+                                                                <label>電玩暱稱</label>
+                                                                <input type="text" class="form-control" name="nick_name"
+                                                                       required="">
+                                                            </div>
+                                                            <div class="form-group">
                                                                 <label>電話號碼</label>
                                                                 <input type="text" class="form-control" name="number"
                                                                        required="">
@@ -153,6 +205,18 @@ if (isset($_POST['register_gamer'])) {
                                                                 <label>個人資料圖片（可選擇多張圖片。建議尺寸 800x900）</label>
                                                                 <input type="file" class="form-control" name="profile_image[]"
                                                                        required="" accept="image/*" multiple>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>上傳身份證正面,反面（可選擇多張圖片。建議尺寸 800x900）</label>
+                                                                <input type="file" class="form-control" name="id_image[]"
+                                                                       required="" accept="image/*" multiple>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>上传排名截图（800x900）</label>
+                                                                <input type="file" class="form-control" name="ranking_image"
+                                                                       required="" accept="image/*">
                                                             </div>
 
                                                             <div class="form-group">

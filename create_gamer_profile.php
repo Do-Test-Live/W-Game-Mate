@@ -11,7 +11,6 @@ if (!isset($_SESSION['userid'])) {
 
 if (isset($_POST['submit_profile'])) {
     $gamerid = $db_handle->checkValue($_POST['gamer_id']);
-    $nick_name = $db_handle->checkValue($_POST['nick_name']);
     $game_type = $db_handle->checkValue($_POST['game_type']);
     $game = $db_handle->checkValue($_POST['game']);
     $game_mode = $db_handle->checkValue($_POST['game_mode']);
@@ -22,7 +21,7 @@ if (isset($_POST['submit_profile'])) {
 
 
 
-    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`gamer_id`,`game_type`,`nick_name`, `game_name`, `game_mood`, `price`, `price_unit`, `inserted_at`) VALUES ('$gamerid','$game_type','$nick_name','$game','$game_mode','$price','$price_unit','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `gamer_profile`(`gamer_id`,`game_type`, `game_name`, `game_mood`, `price`, `price_unit`, `inserted_at`) VALUES ('$gamerid','$game_type','$game','$game_mode','$price','$price_unit','$inserted_at')");
 
     if($insert){
         echo "
@@ -77,11 +76,6 @@ if (isset($_POST['submit_profile'])) {
                                                         <form action="" method="post" enctype="multipart/form-data">
                                                             <input type="hidden" name="gamer_id"
                                                                    value="<?php echo $_SESSION['userid']; ?>">
-                                                            <div class="form-group">
-                                                                <label>暱稱</label>
-                                                                <input type="text" class="form-control" name="nick_name"
-                                                                       required="">
-                                                            </div>
                                                             <div class="form-group">
                                                                 <label>遊戲類型</label>
                                                                 <select id="gameType" class="form-control"

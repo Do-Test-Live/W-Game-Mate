@@ -161,14 +161,9 @@ if (isset($_POST['signup'])) {
                                                 <div class="form-checkbox user-checkbox mt-0">
                                                     <input type="radio" class="custom-checkbox checkbox-round active"
                                                            id="check-customer" name="customer" value="user"
-                                                           required="">
+                                                           required="" checked>
                                                     <label for="check-customer" class="check-customer mb-1">I am a
                                                         user</label>
-                                                    <br>
-                                                    <input type="radio" class="custom-checkbox checkbox-round"
-                                                           id="check-seller" name="customer" value="gamer"
-                                                           required="" checked>
-                                                    <label for="check-seller" class="check-seller">I am a gamer</label>
                                                 </div>
                                                 <p>Your personal data will be used to support your experience
                                                     throughout this website, to manage access to your account,

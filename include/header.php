@@ -1,48 +1,4 @@
 <header class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="header-left">
-                <p class="welcome-msg">Welcome to Gamemate Store message!</p>
-            </div>
-            <div class="header-right">
-                <div class="dropdown">
-                    <a href="#currency">USD</a>
-                    <div class="dropdown-box">
-                        <a href="#USD">USD</a>
-                        <a href="#EUR">EUR</a>
-                    </div>
-                </div>
-                <!-- End of DropDown Menu -->
-
-                <div class="dropdown">
-                    <a href="#language"><img src="assets/images/flags/eng.png" alt="ENG Flag" width="14"
-                                             height="8" class="dropdown-image"/> ENG
-                    </a>
-                    <div class="dropdown-box">
-                        <a href="#ENG">
-                            <img src="assets/images/flags/eng.png" alt="ENG Flag" width="14" height="8"
-                                 class="dropdown-image"/>
-                            ENG
-                        </a>
-                        <a href="#FRA">
-                            <img src="assets/images/flags/fra.png" alt="FRA Flag" width="14" height="8"
-                                 class="dropdown-image"/>
-                            FRA
-                        </a>
-                    </div>
-                </div>
-                <!-- End of Dropdown Menu -->
-                <span class="divider d-lg-show"></span>
-                <a href="#" class="d-lg-show">Blog</a>
-                <a href="gamer_signup.php" class="d-lg-show">Signup as Gamer</a>
-                <a href="#" class="d-lg-show">About Us</a>
-                <a href="#" class="d-lg-show">
-                    <i class="w-icon-exclamation-circle"></i>
-                    Need Help
-                </a>
-            </div>
-        </div>
-    </div>
     <!-- End of Header Top -->
 
     <div class="header-middle">
@@ -284,7 +240,7 @@
                     </form>
                 </div>
                 <div class="header-right ml-4">
-                    <a href="#" class="d-xl-show"><i class="w-icon-map-marker"></i>Track Order</a>
+                    <a href="gamer_signup.php" class="d-xl-show"><i class="w-icon-account mr-1"></i>註冊成為陪玩師</a>
                     <a href="#"><i class="w-icon-sale"></i>Special Offers</a>
                 </div>
             </div>

@@ -108,44 +108,6 @@ date_default_timezone_set("Asia/Hong_Kong");
                             'slidesPerView': 4
                         }
                     }}">
-                    <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
-                        <div class="swiper-slide icon-box icon-box-side text-dark">
-                            <span class="icon-box-icon icon-shipping">
-                                <i class="w-icon-truck"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title font-weight-bolder">Free Shipping & Returns</h4>
-                                <p class="text-default">For all orders over $99</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide icon-box icon-box-side text-dark">
-                            <span class="icon-box-icon icon-payment">
-                                <i class="w-icon-bag"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title font-weight-bolder">Secure Payment</h4>
-                                <p class="text-default">We ensure secure payment</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide icon-box icon-box-side text-dark icon-box-money">
-                            <span class="icon-box-icon icon-money">
-                                <i class="w-icon-money"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title font-weight-bolder">Money Back Guarantee</h4>
-                                <p class="text-default">Any back within 30 days</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide icon-box icon-box-side text-dark icon-box-chat">
-                            <span class="icon-box-icon icon-chat">
-                                <i class="w-icon-chat"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title font-weight-bolder">Customer Support</h4>
-                                <p class="text-default">Call or email us 24/7</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- End of Icon Box Wrapper -->
             </div>
@@ -155,14 +117,11 @@ date_default_timezone_set("Asia/Hong_Kong");
     <section class="head2">
         <div class="container">
             <div class="title-link-wrapper title-deals after-none appear-animate">
-                <h2 class="title">Deals Hot of The Day</h2>
-                <div class="product-countdown-container d-flex font-size-sm text-white bg-dark br-xs align-items-center mr-auto mt-1 mb-1">
-                    <label>Offer Ends in: </label>
-                    <div class="product-countdown countdown-compact ml-1 font-weight-bold" data-until="+10h"
-                         data-relative="true" data-compact="true" data-format="HMS">00:00:00</div>
+                <h2 class="title">Top Gamers of the Month</h2>
+                <div class="product-countdown-container d-flex font-size-sm text-white br-xs align-items-center mr-auto mt-1 mb-1">
                 </div>
-                <a href="demo14-shop.html" class="ml-0 mb-0 ls-normal" style="color: white">
-                    More Products
+                <a href="gamer.php" class="ml-0 mb-0 ls-normal" style="color: white">
+                    More Gamers
                     <i class="w-icon-long-arrow-right"></i>
                 </a>
             </div>
@@ -182,6 +141,73 @@ date_default_timezone_set("Asia/Hong_Kong");
                         }
                     }}">
                 <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-sm-3 cols-2">
+                    <div class="swiper-slide product-wrap">
+                        <div class="product text-center">
+                            <figure class="product-media">
+                                <a href="product-default.html">
+                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
+                                         height="337">
+                                    <img src="assets/images/demos/demo14/products/img04.jpg" alt="Product" width="300"
+                                         height="337">
+                                </a>
+                            </figure>
+                            <h4 class="head5">Lorem ipsum</h4>
+                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
+                    <div class="swiper-slide product-wrap">
+                        <div class="product text-center">
+                            <figure class="product-media">
+                                <a href="product-default.html">
+                                    <img src="assets/images/demos/demo14/products/img05.jpg" alt="Product" width="300" height="337">
+                                    <img src="assets/images/demos/demo14/products/img05.jpg"  alt="Product" width="300" height="337">
+                                </a>
+                            </figure>
+                            <h4 class="head5">Lorem ipsum</h4>
+                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
+                    <div class="swiper-slide product-wrap">
+                        <div class="product text-center">
+                            <figure class="product-media">
+                                <a href="product-default.html">
+                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
+                                    <img src="assets/images/demos/demo14/products/img06.jpg" alt="Product" width="300" height="337">
+                                </a>
+                            </figure>
+                            <h4 class="head5">Lorem ipsum</h4>
+                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
+                    <div class="swiper-slide product-wrap">
+                        <div class="product text-center">
+                            <figure class="product-media">
+                                <a href="product-default.html">
+                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
+                                    <img src="assets/images/demos/demo14/products/img07.jpg" alt="Product" width="300" height="337">
+                                </a>
+                            </figure>
+                            <h4 class="head5">Lorem ipsum</h4>
+                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
+                    <div class="swiper-slide product-wrap">
+                        <div class="product text-center">
+                            <figure class="product-media">
+                                <a href="product-default.html">
+                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
+                                    <img src="assets/images/demos/demo14/products/img08.jpg" alt="Product" width="300" height="337">
+                                </a>
+                            </figure>
+                            <h4 class="head5">Lorem ipsum</h4>
+                            <P class="prag"> Lorem ipsum is a placeholder text commonly used to</P>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
                     <div class="swiper-slide product-wrap">
                         <div class="product text-center">
                             <figure class="product-media">
