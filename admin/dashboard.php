@@ -90,7 +90,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Patient</h4>
+                            <h4 class="card-title">Gamers</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
