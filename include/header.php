@@ -34,15 +34,21 @@
             </div>
             <div class="header-right ml-4">
                 <div class="account align-items-center d-sm-show">
-                    <?php
-                    if (isset($_SESSION['userid'])) {
-                        $customer_id = $_SESSION['userid'];
-                        $fetch_customer = $db_handle->runQuery("select * from gamer where id = '$customer_id'");
-                        ?>
                         <a class="login inline-type d-flex ls-normal" href="gamer_profile.php">
                             <i class="w-icon-account d-flex align-items-center justify-content-center br-50"></i>
                             <span class="d-flex flex-column justify-content-center ml-3 d-xl-show">Welcome
-                                    <b class="d-block font-weight-bold ls-25"><?php echo $fetch_customer[0]['full_name_cn'];?></b>
+                                    <b class="d-block font-weight-bold ls-25"><?php
+                                        if (isset($_SESSION['userid'])) {
+                                        $id = $_SESSION['userid'];
+                                        $role = $_SESSION['role'];
+                                        if($role == 'gamer'){
+                                            $fetch_customer = $db_handle->runQuery("select * from gamer where id = '$id'");
+                                            echo $fetch_customer[0]['full_name_cn'];
+                                        } else{
+                                            $fetch_customer = $db_handle->runQuery("select * from user where id = '$id'");
+                                            echo $fetch_customer[0]['first_name'];
+                                        }
+                                        ?></b>
                                 </span>
                         </a>
                         <a class="login inline-type d-flex ls-normal ml-5" href="logout.php">

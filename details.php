@@ -143,11 +143,11 @@ $fetch_data = $db_handle->runQuery("SELECT * FROM `gamer_profile`,`gamer` WHERE 
 
                                     <div class="fix-bottom product-sticky-content sticky-content">
                                         <div class="product-form container">
-                                            <button class="btn btn-primary btn-cart" style="margin-right: 10px">
+                                            <button class="btn btn-primary btn-chat" style="margin-right: 10px">
                                                 <i class="w-icon-chat"></i>
                                                 <span>Chat</span>
                                             </button>
-                                            <button class="btn btn-primary btn-cart" style="margin-left: 10px">
+                                            <button class="btn btn-primary btn-chat" style="margin-left: 10px">
                                                 <i class="w-icon-cart"></i>
                                                 <span>Place an Order Now</span>
                                             </button>

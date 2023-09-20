@@ -6,56 +6,86 @@ date_default_timezone_set("Asia/Hong_Kong");
 if (isset($_POST['login'])) {
     $email = $db_handle->checkValue($_POST['email']);
     $password = $db_handle->checkValue($_POST['password']);
-    $log_in = $db_handle->runQuery("select * from gamer where email = '$email' and password = '$password'");
-    $log_in_no = $db_handle->numRows("select * from gamer where email = '$email' and password = '$password'");
-    if($log_in){
-        if ($log_in_no == 1) {
-            $s = $log_in[0]['status'];
-            if($s == '1'){
-                $_SESSION['userid'] = $log_in[0]["id"];
-                if($log_in[0]['role'] == 'gamer'){
-                    echo "<script>
+    $role = $db_handle->checkValue($_POST['customer']);
+    if($role == 'gamer'){
+        $log_in = $db_handle->runQuery("select * from gamer where email = '$email' and password = '$password'");
+        $log_in_no = $db_handle->numRows("select * from gamer where email = '$email' and password = '$password'");
+        if($log_in){
+            if ($log_in_no == 1) {
+                $s = $log_in[0]['status'];
+                if($s == '1'){
+                    $_SESSION['userid'] = $log_in[0]["id"];
+                    $_SESSION['role'] = $role;
+                        echo "<script>
                 alert('Login Successful');
                 window.location.href='gamer_profile.php';
                 </script>";
-                }else{
+                } else{
                     echo "<script>
-                alert('Login Successful');
-                window.location.href='index.php';
-                </script>";
-                }
-            } else{
-                echo "<script>
                 alert('Your account is not approved yet!');
                 window.location.href='login.php';
                 </script>";
+                }
+            } else {
+                echo "<script>
+                alert('Something went wrong.');
+                window.location.href='login.php';
+                </script>";
             }
-        } else {
+        } else{
             echo "<script>
                 alert('Something went wrong.');
                 window.location.href='login.php';
                 </script>";
         }
-    } else{
-        echo "<script>
+    } if($role == 'user'){
+        $log_in = $db_handle->runQuery("select * from user where email = '$email' and password = '$password'");
+        $log_in_no = $db_handle->numRows("select * from user where email = '$email' and password = '$password'");
+        if($log_in){
+            if ($log_in_no == 1) {
+                    $_SESSION['userid'] = $log_in[0]["id"];
+                    $_SESSION['role'] = $role;
+                    echo "<script>
+                alert('Login Successful');
+                window.location.href='index.php';
+                </script>";
+            } else {
+                echo "<script>
                 alert('Something went wrong.');
                 window.location.href='login.php';
                 </script>";
+            }
+        } else{
+            echo "<script>
+                alert('Something went wrong.');
+                window.location.href='login.php';
+                </script>";
+        }
     }
 }
 
 if (isset($_POST['signup'])) {
-
     $email = $db_handle->checkValue($_POST['email']);
+    $lemail = strtolower($email);
     $password = $db_handle->checkValue($_POST['password']);
     $fname = $db_handle->checkValue($_POST['fname']);
     $lname = $db_handle->checkValue($_POST['lname']);
     $phone = $db_handle->checkValue($_POST['phone']);
-    $customer = $db_handle->checkValue($_POST['customer']);
     $inserted_at = date('Y-m-d h:i:s');
 
+    $check_email = $db_handle->numRows("select * from user where email = '$lemail'");
 
-    $query = "INSERT INTO `user`(`fname`, `lname`, `email`, `password`, `phone`, `role`, `inserted_at`) VALUES ('$fname','$lname','$email','$password','$phone','$customer','$inserted_at')";
+    if($check_email >= 1){
+        echo "
+        <script>
+        alert('This email is already registered!');
+        window.location.href = 'login.php';
+</script>
+        ";
+    }
+
+
+    $query = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `password`, `phone_number`, `inserted_at`) VALUES ('$fname','$lname','$lemail','$password','$phone','$inserted_at')";
 
     $insert = $db_handle->insertQuery($query);
 
@@ -121,6 +151,20 @@ if (isset($_POST['signup'])) {
                                                     <label>Password *</label>
                                                     <input type="password" class="form-control" name="password"
                                                            id="password" required="">
+                                                </div>
+                                                <div class="form-checkbox user-checkbox mt-2">
+                                                    <input type="radio" class="custom-checkbox checkbox-round active"
+                                                           id="check-customer" name="customer" value="user"
+                                                           required="" checked>
+                                                    <label for="check-customer" class="check-customer mb-1">I am a
+                                                        user</label>
+                                                </div>
+                                                <div class="form-checkbox user-checkbox mt-0">
+                                                    <input type="radio" class="custom-checkbox checkbox-round active"
+                                                           id="check-customer" name="customer" value="gamer"
+                                                           required="">
+                                                    <label for="check-customer" class="check-customer mb-1">I am a
+                                                        gamer</label>
                                                 </div>
                                                 <div class="form-checkbox d-flex align-items-center justify-content-between">
                                                     <a href="#">Lost your password?</a>

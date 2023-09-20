@@ -35,4 +35,5 @@
 <link rel="stylesheet" type="text/css" href="assets/vendor/magnific-popup/magnific-popup.min.css">
 
 <!-- Default CSS -->
+<link rel="stylesheet" type="text/css" href="assets/css/chat.css">
 <link rel="stylesheet" type="text/css" href="assets/css/demo14.min.css">
