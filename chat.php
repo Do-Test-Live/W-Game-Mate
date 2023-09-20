@@ -3,7 +3,10 @@ session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
-$my_id = $_GET['id'];
+
+if(isset($_GET['rid'])){
+   $rid = 'g-'.$_GET['rid'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,9 +62,9 @@ $my_id = $_GET['id'];
                             $f_gamer = $db_handle->runQuery("SELECT * FROM gamer WHERE id = '$id'");
 
                             if (!empty($f_gamer)) {
-                                $img = explode(',', $f_gamer[0]['images']); // Note: Use $f_gamer[0] to access the first row
+                                $img = explode(',', $f_gamer[0]['images']);
                                 ?>
-                                <div class="user-chat" data-username="Maria Dennis">
+                                <div class="user-chat" onclick="window.location.href = 'chat.php?rid=<?php echo $f_gamer[0]['id'];?>'">
                                     <div class="user-chat-img">
                                         <img src="<?php echo $img[0]; ?>"
                                              alt="">
@@ -85,37 +88,42 @@ $my_id = $_GET['id'];
             </div>
             <div class="content-chat-message-user" data-username="Maria Dennis">
                 <div class="head-chat-message-user">
-                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    <?php
+                    $fetch_rec = $db_handle->runQuery("select * from gamer where id = {$_GET['rid']}");
+                    $img = explode(',',$fetch_rec[0]['images'])
+                    ?>
+                    <img src="<?php echo $img[0];?>"
                          alt="">
                     <div class="message-user-profile pt-3">
-                        <p class="mt-0 mb-0 text-white"><strong><?php echo $f_gamer[0]['full_name_cn'] ?></strong></p>
+                        <p class="mt-0 mb-0 text-white"><strong><?php echo $fetch_rec[0]['full_name_cn'] ?></strong></p>
                     </div>
                 </div>
                 <div class="body-chat-message-user">
                     <?php
-                    $fetch_message = $db_handle->runQuery("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$r' || receiver_id = '$r') order by id desc;");
-                    $fetch_message_no = $db_handle->numRows("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$r' || receiver_id = '$r') order by id desc;");
+                    $fetch_message = $db_handle->runQuery("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid') order by id desc;");
+                    $fetch_message_no = $db_handle->numRows("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid') order by id desc;");
                     for ($j = 0; $j < $fetch_message_no; $j++) {
                         ?>
-                        <div class="message-user-left">
-                            <div class="message-user-left-text">
+                        <div class="<?php
+                        if ($fetch_message[$j]['sender_id'] == $chat_id){
+                            echo "message-user-right";
+                        } else{
+                            echo "message-user-left";
+                        }
+                        ?>">
+                            <div class="<?php
+                            if ($fetch_message[$j]['sender_id'] == $chat_id){
+                                echo "message-user-right-text";
+                            } else{
+                                echo "message-user-left-text";
+                            }
+                            ?>">
                                 <strong><?php echo $fetch_message[$j]['message']; ?></strong>
                             </div>
                         </div>
                         <?php
                     }
                     ?>
-                    <div class="message-user-right">
-                        <div class="message-user-right-img">
-                            <p class="mt-0 mb-0"><strong>Luis Angel Solano Rivera</strong></p>
-                            <small>mié 17:59</small>
-                            <img src="https://images.pexels.com/photos/2117283/pexels-photo-2117283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                 alt="">
-                        </div>
-                        <div class="message-user-right-text">
-                            <strong>Hola, ¿Cómo estás?</strong>
-                        </div>
-                    </div>
                 </div>
                 <div class="footer-chat-message-user">
                     <div class="message-user-send">
@@ -207,6 +215,27 @@ $my_id = $_GET['id'];
         userChats[0].classList.add('active');
         chatMessages[0].classList.add('active');
     });
+
+    function fetchMessages() {
+        $.ajax({
+            url: 'fetch_messages.php', // The PHP script that fetches messages
+            method: 'POST', // You can use POST or GET, depending on your implementation
+            data: {
+                chat_id: '<?php echo $chat_id; ?>', // Pass any necessary data to the server
+                rid: '<?php echo $rid; ?>'
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching messages: " + error);
+            }
+        });
+    }
+
+    // Call fetchMessages every 3 seconds
+    setInterval(fetchMessages, 3000); // 3000 milliseconds = 3 seconds
 </script>
 </body>
 </html>

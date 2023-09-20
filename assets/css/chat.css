@@ -148,10 +148,12 @@ ul li, ol li{
     margin: -15px -15px 15px -15px;
     border-radius: 25px 25px 0 0;
     padding: 10px 15px;
+    height: 80px;
 }
 
 .content-chat .content-chat-user .head-search-chat h4{
     color: #ffffff;
+    margin-top: 23px;
 }
 
 .content-chat .content-chat-user .search-user{
@@ -225,7 +227,7 @@ ul li, ol li{
 }
 
 .content-chat .content-chat-user .list-search-user-chat .user-chat.active{
-    background-color: #c41dcc30;
+    background-color: rgba(196, 29, 204, 0);
 }
 
 .content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-img{
@@ -568,10 +570,9 @@ ul li, ol li{
     
 
     .content-chat .content-chat-user .list-search-user-chat .user-chat {
-        width: 60px;
+        width: 80px;
         height: 60px;
         padding: 10px;
-        background-color: #7705e7;
         max-height: -moz-fit-content;
         max-height: fit-content;
         border-radius: 50%;
