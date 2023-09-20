@@ -4,8 +4,8 @@ require_once('include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 
-if(isset($_GET['rid'])){
-   $rid = 'g-'.$_GET['rid'];
+if (isset($_GET['rid'])) {
+    $rid = 'g-' . $_GET['rid'];
 }
 ?>
 <!DOCTYPE html>
@@ -64,7 +64,8 @@ if(isset($_GET['rid'])){
                             if (!empty($f_gamer)) {
                                 $img = explode(',', $f_gamer[0]['images']);
                                 ?>
-                                <div class="user-chat" onclick="window.location.href = 'chat.php?rid=<?php echo $f_gamer[0]['id'];?>'">
+                                <div class="user-chat"
+                                     onclick="window.location.href = 'chat.php?rid=<?php echo $f_gamer[0]['id']; ?>'">
                                     <div class="user-chat-img">
                                         <img src="<?php echo $img[0]; ?>"
                                              alt="">
@@ -90,40 +91,16 @@ if(isset($_GET['rid'])){
                 <div class="head-chat-message-user">
                     <?php
                     $fetch_rec = $db_handle->runQuery("select * from gamer where id = {$_GET['rid']}");
-                    $img = explode(',',$fetch_rec[0]['images'])
+                    $img = explode(',', $fetch_rec[0]['images'])
                     ?>
-                    <img src="<?php echo $img[0];?>"
+                    <img src="<?php echo $img[0]; ?>"
                          alt="">
                     <div class="message-user-profile pt-3">
                         <p class="mt-0 mb-0 text-white"><strong><?php echo $fetch_rec[0]['full_name_cn'] ?></strong></p>
                     </div>
                 </div>
-                <div class="body-chat-message-user">
-                    <?php
-                    $fetch_message = $db_handle->runQuery("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid') order by id desc;");
-                    $fetch_message_no = $db_handle->numRows("select * from chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid') order by id desc;");
-                    for ($j = 0; $j < $fetch_message_no; $j++) {
-                        ?>
-                        <div class="<?php
-                        if ($fetch_message[$j]['sender_id'] == $chat_id){
-                            echo "message-user-right";
-                        } else{
-                            echo "message-user-left";
-                        }
-                        ?>">
-                            <div class="<?php
-                            if ($fetch_message[$j]['sender_id'] == $chat_id){
-                                echo "message-user-right-text";
-                            } else{
-                                echo "message-user-left-text";
-                            }
-                            ?>">
-                                <strong><?php echo $fetch_message[$j]['message']; ?></strong>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                <div class="body-chat-message-user" id="chat-area">
+
                 </div>
                 <div class="footer-chat-message-user">
                     <div class="message-user-send">
@@ -225,17 +202,38 @@ if(isset($_GET['rid'])){
                 rid: '<?php echo $rid; ?>'
             },
             dataType: 'json',
-            success: function(data) {
-                console.log(data);
+            success: function (data) {
+                // Assuming 'data.messages' contains an array of new chat messages
+                var chatArea = $("#chat-area");
+// Clear the existing content of the chat area
+                chatArea.empty();
+                // Iterate through the new messages and append them to the chat area
+                for (var i = 0; i < data.messages.length; i++) {
+                    var message = data.messages[i];
+                    var senderClass = message.sender_id === '<?php echo $chat_id; ?>' ? 'message-user-right' : 'message-user-left';
+                    var textClass = message.sender_id === '<?php echo $chat_id; ?>' ? 'message-user-right-text' : 'message-user-left-text';
+
+                    // Create a new message div and append it to the chat area
+                    var messageDiv = $('<div class="' + senderClass + '">').append(
+                        $('<div class="' + textClass + '">').append(
+                            $('<strong>').text(message.message)
+                        )
+                    );
+
+                    chatArea.append(messageDiv);
+                }
+
+                // Scroll to the bottom of the chat area to show the latest message
+                chatArea.scrollTop(chatArea[0].scrollHeight);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Error fetching messages: " + error);
             }
         });
     }
 
     // Call fetchMessages every 3 seconds
-    setInterval(fetchMessages, 3000); // 3000 milliseconds = 3 seconds
+    setInterval(fetchMessages, 1000); // 3000 milliseconds = 3 seconds
 </script>
 </body>
 </html>
