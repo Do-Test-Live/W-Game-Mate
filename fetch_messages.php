@@ -8,7 +8,7 @@ $chat_id = $_POST['chat_id'];
 $rid = $_POST['rid'];
 
 // Fetch chat messages based on chat_id and rid
-$query = "SELECT * FROM chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid') ORDER BY id DESC";
+$query = "SELECT * FROM chat WHERE (sender_id = '$chat_id' || receiver_id = '$chat_id') AND (sender_id = '$rid' || receiver_id = '$rid')";
 $fetch_message = $db_handle->runQuery($query);
 
 // Create an array to store chat messages

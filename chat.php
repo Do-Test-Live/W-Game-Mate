@@ -3,9 +3,14 @@ session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
-
+$gamer = 0;
 if (isset($_GET['rid'])) {
-    $rid = 'g-' . $_GET['rid'];
+    if ($_SESSION['role'] == 'gamer') {
+        $gamer = 1;
+        $rid = 'u-' . $_GET['rid'];
+    } else {
+        $rid = 'g-' . $_GET['rid'];
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +48,7 @@ if (isset($_GET['rid'])) {
 
                 <div class="list-search-user-chat mt-20">
                     <?php
-                    if ($_SESSION['role'] == 'user') {
+                    if ($gamer == '0') {
                         $chat_id = 'u-' . $_SESSION['userid'];
                     } else {
                         $chat_id = 'g-' . $_SESSION['userid'];
@@ -59,29 +64,45 @@ if (isset($_GET['rid'])) {
                             $id = $rec[1]; // Get the portion after the hyphen
 
                             // Query the database using the extracted ID
-                            $f_gamer = $db_handle->runQuery("SELECT * FROM gamer WHERE id = '$id'");
+                            if ($gamer == '0') {
+                                $f_receiver = $db_handle->runQuery("SELECT * FROM gamer WHERE id = '$id'");
+                                if (!empty($f_receiver)) {
+                                    ?>
+                                    <div class="user-chat"
+                                         onclick="window.location.href = 'chat.php?rid=<?php echo $f_receiver[0]['id']; ?>'">
+                                        <div class="user-chat-img">
+                                            <img src="<?php echo $img[0]; ?>"
+                                                 alt="">
+                                        </div>
 
-                            if (!empty($f_gamer)) {
-                                $img = explode(',', $f_gamer[0]['images']);
+                                        <div class="user-chat-text">
+                                            <p class="mt-0 mb-0"><strong><?php
+                                                    echo $f_receiver[0]['full_name_cn'];
+                                                    ?></strong></p>
+                                            <small><?php echo $fetch_chat_head[$i]['message']; ?></small>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                $f_receiver = $db_handle->runQuery("SELECT * FROM user WHERE id = '$id'");
                                 ?>
                                 <div class="user-chat"
-                                     onclick="window.location.href = 'chat.php?rid=<?php echo $f_gamer[0]['id']; ?>'">
+                                     onclick="window.location.href = 'chat.php?rid=<?php echo $f_receiver[0]['id']; ?>'">
                                     <div class="user-chat-img">
-                                        <img src="<?php echo $img[0]; ?>"
+                                        <img src="assets/images/14044.jpg"
                                              alt="">
                                     </div>
 
                                     <div class="user-chat-text">
                                         <p class="mt-0 mb-0"><strong><?php
-                                                echo $f_gamer[0]['full_name_cn'];
+                                                echo $f_receiver[0]['first_name'] . ' ' . $f_receiver[0]['last_name'];
                                                 ?></strong></p>
                                         <small><?php echo $fetch_chat_head[$i]['message']; ?></small>
                                     </div>
                                 </div>
                                 <?php
                             }
-                        } else {
-                            echo 'Invalid receiver ID format'; // Handle the case where there's no hyphen
                         }
                     }
                     ?>
@@ -90,26 +111,56 @@ if (isset($_GET['rid'])) {
             <div class="content-chat-message-user" data-username="Maria Dennis">
                 <div class="head-chat-message-user">
                     <?php
-                    $fetch_rec = $db_handle->runQuery("select * from gamer where id = {$_GET['rid']}");
-                    $img = explode(',', $fetch_rec[0]['images'])
+                    if ($gamer == '0') {
+                        $fetch_rec = $db_handle->runQuery("select * from gamer where id = {$_GET['rid']}");
+                        $img = explode(',', $fetch_rec[0]['images'])
+                        ?>
+                        <img src="<?php echo $img[0]; ?>"
+                             alt="">
+                        <div class="message-user-profile pt-3">
+                            <p class="mt-0 mb-0 text-white"><strong><?php echo $fetch_rec[0]['full_name_cn'] ?></strong>
+                            </p>
+                        </div>
+                        <?php
+                    } else{
+                        $fetch_rec = $db_handle->runQuery("select * from user where id = {$_GET['rid']}");
+                        ?>
+                        <img src="assets/images/14044.jpg"
+                             alt="">
+                        <div class="message-user-profile pt-3">
+                            <p class="mt-0 mb-0 text-white"><strong><?php echo $f_receiver[0]['first_name'] . ' ' . $f_receiver[0]['last_name'];?></strong>
+                            </p>
+                        </div>
+                        <?php
+                    }
                     ?>
-                    <img src="<?php echo $img[0]; ?>"
-                         alt="">
-                    <div class="message-user-profile pt-3">
-                        <p class="mt-0 mb-0 text-white"><strong><?php echo $fetch_rec[0]['full_name_cn'] ?></strong></p>
-                    </div>
                 </div>
                 <div class="body-chat-message-user" id="chat-area">
 
                 </div>
-                <div class="footer-chat-message-user">
-                    <div class="message-user-send">
-                        <input type="text" placeholder="Aa">
+                <form id="myForm">
+                    <div class="footer-chat-message-user">
+                        <div class="message-user-send">
+                            <input type="text" placeholder="Aa" name="message" id="message-box" autocomplete="off"
+                                   required>
+                        </div>
+                        <input type="hidden" value="<?php echo $chat_id ?>" name="sender">
+                        <?php
+                        if($gamer == '0'){
+                            ?>
+                            <input type="hidden" value="g-<?php echo $_GET['rid'] ?>" name="receiver">
+                            <?php
+                        } else{
+                            ?>
+                            <input type="hidden" value="u-<?php echo $_GET['rid'] ?>" name="receiver">
+                            <?php
+                        }
+                        ?>
+                        <button type="submit">
+                            <i class="w-icon-long-arrow-right"></i>
+                        </button>
                     </div>
-                    <button type="button">
-                        <i class="fa-solid fa-send-o"></i>
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
     </main>
@@ -163,6 +214,8 @@ if (isset($_GET['rid'])) {
     });
 </script>
 <script>
+    var chatArea = $("#chat-area");
+
     document.addEventListener('DOMContentLoaded', () => {
         const userChats = document.querySelectorAll('.user-chat');
         const chatMessages = document.querySelectorAll('.content-chat-message-user');
@@ -194,19 +247,24 @@ if (isset($_GET['rid'])) {
     });
 
     function fetchMessages() {
+        var isScrolledToBottom = chatArea[0].scrollHeight - chatArea.scrollTop() === chatArea.outerHeight();
+
         $.ajax({
-            url: 'fetch_messages.php', // The PHP script that fetches messages
-            method: 'POST', // You can use POST or GET, depending on your implementation
+            url: 'fetch_messages.php',
+            method: 'POST',
             data: {
-                chat_id: '<?php echo $chat_id; ?>', // Pass any necessary data to the server
+                chat_id: '<?php echo $chat_id; ?>',
                 rid: '<?php echo $rid; ?>'
             },
             dataType: 'json',
             success: function (data) {
                 // Assuming 'data.messages' contains an array of new chat messages
-                var chatArea = $("#chat-area");
-// Clear the existing content of the chat area
+                // Store the current scroll position before updating the chat
+                var scrollTopBeforeUpdate = chatArea.scrollTop();
+
+                // Clear the existing content of the chat area
                 chatArea.empty();
+
                 // Iterate through the new messages and append them to the chat area
                 for (var i = 0; i < data.messages.length; i++) {
                     var message = data.messages[i];
@@ -223,8 +281,13 @@ if (isset($_GET['rid'])) {
                     chatArea.append(messageDiv);
                 }
 
-                // Scroll to the bottom of the chat area to show the latest message
-                chatArea.scrollTop(chatArea[0].scrollHeight);
+                // Only scroll to the bottom if the user was already at the bottom before the update
+                if (isScrolledToBottom) {
+                    chatArea.scrollTop(chatArea[0].scrollHeight);
+                } else {
+                    // Restore the scroll position to where it was before the update
+                    chatArea.scrollTop(scrollTopBeforeUpdate);
+                }
             },
             error: function (xhr, status, error) {
                 console.error("Error fetching messages: " + error);
@@ -232,8 +295,51 @@ if (isset($_GET['rid'])) {
         });
     }
 
-    // Call fetchMessages every 3 seconds
-    setInterval(fetchMessages, 1000); // 3000 milliseconds = 3 seconds
+    $(document).ready(function () {
+        // Call fetchMessages initially
+        fetchMessages();
+
+        // Scroll to the bottom after initial messages are loaded
+        $("#chat-area").scrollTop($("#chat-area")[0].scrollHeight);
+
+        // Set up the regular interval for fetching messages
+        setInterval(fetchMessages, 2000); // 3000 milliseconds = 3 seconds
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(form);
+
+            fetch("submit_message.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        // Handle success here
+                        let input = document.getElementById('message-box');
+                        input.value = '';
+                        // You can update the page or show a success message here
+                    } else {
+                        // Handle errors here
+                        console.error("Form submission failed");
+                    }
+                })
+                .catch((error) => {
+                    // Handle network errors here
+                    console.error("Network error:", error);
+                });
+        });
+    });
+
+
 </script>
+
+
 </body>
 </html>
