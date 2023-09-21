@@ -141,7 +141,7 @@ if (isset($_GET['rid'])) {
                 <form id="myForm">
                     <div class="footer-chat-message-user">
                         <div class="message-user-send">
-                            <input type="text" placeholder="Aa" name="message" id="message-box" autocomplete="off"
+                            <input type="text" placeholder="Aa" name="message" id="message-box" autocomplete="off" maxlength="10000"
                                    required>
                         </div>
                         <input type="hidden" value="<?php echo $chat_id ?>" name="sender">
