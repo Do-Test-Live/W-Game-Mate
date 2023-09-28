@@ -9,11 +9,11 @@ class DBController {
     private $conn;
 
     function __construct() {
-        if($_SERVER['SERVER_NAME']=="www.gamemate.ngt.hk"||$_SERVER['SERVER_NAME']=="gamemate.ngt.hk"){
+        if($_SERVER['SERVER_NAME']=="www.gamemate.com.hk"||$_SERVER['SERVER_NAME']=="gamemate.com.hk"){
             $this->host = "localhost";
-            $this->user = "u5elkofbotesn";
-            $this->password = "+91iexAy61@)";
-            $this->database = "dbzq8t6gaely2n";
+            $this->user = "uzafgpw2nj2qs";
+            $this->password = "b+mt*5~9#o13";
+            $this->database = "dbrjpyn0ljoass";
         }
 
         $this->conn = $this->connectDB();

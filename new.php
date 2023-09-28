@@ -35,6 +35,13 @@
         .uk-card-media-top{
             background-color: #4a9fff5e;
         }
+        .header-button{
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 150px;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +50,6 @@
     <!-- Start of Header -->
     <header class="header header-border">
         <!-- End of Header Top -->
-
         <div class="header-middle">
             <div class="container">
                 <div class="header-left mr-md-4">
@@ -68,15 +74,16 @@
                 </div>
                 <div class="header-right ml-4">
                     <div class="account align-items-center d-sm-show">
-                            <a class="login inline-type d-flex ls-normal" href="#">
-                               <img src="assets/images/new_page/b1.png" width="200px">
-                            </a>
-                        <a class="login inline-type d-flex ls-normal" href="#">
-                            <img src="assets/images/new_page/b2.png" width="200px">
-                        </a>
-                        <a class="login inline-type d-flex ls-normal" href="#">
-                            <img src="assets/images/new_page/b3.png" width="200px">
-                        </a>
+                        <button class="inline-type d-flex ls-normal header-button" href="#" style="background-image: url('assets/images/new_page/b1.png');">
+                            <p style="padding-left: 50px; font-size: 20px; padding-top: 25px">50</p>
+                        </button>
+                        <button class="inline-type d-flex ls-normal header-button" href="#" style="background-image: url('assets/images/new_page/b2.png');">
+                            <p style="padding-left: 50px; font-size: 20px; padding-top: 25px">50</p>
+                        </button>
+                        <button class="inline-type d-flex ls-normal header-button" href="#" style="background-image: url('assets/images/new_page/b3.png');">
+                            <p style="padding-left: 50px; font-size: 20px; padding-top: 25px">50</p>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -92,130 +99,34 @@
                                aria-haspopup="true" aria-expanded="true" data-display="static"
                                title="Browse Categories">
                                 <i class="w-icon-category"></i>
-                                <span>All Games</span>
+                                <span>All Menus</span>
                             </a>
 
                             <div class="dropdown-box">
                                 <ul class="menu vertical-menu category-menu">
                                     <li>
                                         <a href="#">
-                                            <i class="w-icon-electronics"></i>電腦遊戲
-                                        </a>
-                                        <ul class="megamenu">
-                                            <li>
-                                                <ul>
-                                                    <li><a href="gamer.php">英雄聯盟</a></li>
-                                                    <li><a href="#"> 聯盟戰棋</a></li>
-                                                    <li><a href="#">特戰英豪</a></li>
-                                                    <li><a href="#">Apex</a></li>
-                                                    <li><a href="#">絕地求生</a></li>
-                                                    <li><a href="#">彩虹六號</a></li>
-                                                    <li><a href="#"> Among us</a></li>
-                                                    <li><a href="#">Call of duty</a></li>
-                                                    <li><a href="#">糖豆人</a></li>
-                                                    <li><a href="#">Rust</a></li>
-
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li><a href="#">Csgo</a></li>
-                                                    <li><a href="#">Minecraft</a></li>
-                                                    <li><a href="#">Overwatch</a></li>
-                                                    <li><a href="#">Fortnite</a></li>
-                                                    <li><a href="#">Dead by Daylight</a></li>
-                                                    <li><a href="#">魔獸世界</a></li>
-                                                    <li><a href="#">爐石戰記</a></li>
-                                                    <li><a href="#">GTA 5</a></li>
-                                                    <li><a href="#">Super Animal Royale</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <div class="banner-fixed menu-banner menu-banner2">
-                                                    <figure>
-                                                        <!--  <img src="assets/images/menu/banner-2.jpg" alt="Menu Banner"
-                                                               width="235" height="347"/>-->
-                                                    </figure>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="w-icon-mobile"></i>手機遊戲
-                                        </a>
-                                        <ul class="megamenu">
-                                            <li>
-                                                <ul>
-                                                    <li><a href="#">傳說對決</a>
-                                                    </li>
-                                                    <li><a href="#">激鬥峽谷</a></li>
-                                                    <li><a href="#">王者榮耀</a></li>
-                                                    <li><a href="#"> 絕地求生</a></li>
-                                                    <li><a href="#">極速領域</a></li>
-                                                </ul>
-                                                <ul>
-                                                    <li><a href="#">明日之後</a></li>
-                                                    <li><a href="#">荒野行動</a></li>
-                                                    <li><a href="#"> 第五人格</a></li>
-                                                    <li><a href="#"> 皇室戰爭</a></li>
-                                                    <li><a href="#">開心鬥一番</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li><a href="#">跑跑卡丁車</a></li>
-                                                    <li><a href="#">Call of duty</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <div class="menu-banner banner-fixed menu-banner3">
-                                                    <figure>
-                                                        <!--  <img src="assets/images/menu/banner-3.jpg" alt="Menu Banner"
-                                                               width="235" height="461"/>-->
-                                                    </figure>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="w-icon-toy"></i>訂單
+                                            Lorem Ipsum
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="w-icon-basketball"></i>錢包
+                                            Lorem Ipsum
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="w-icon-heartbeat"></i>優惠券
+                                            Lorem Ipsum
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="w-icon-camera"></i>我要做陪玩
+                                            Lorem Ipsum
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="w-icon-furniture"></i>個人資料
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="w-icon-kettle"></i>設置
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="w-icon-kettle"></i>聯繫客服
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="w-icon-kettle"></i>登出
+                                            Lorem Ipsum
                                         </a>
                                     </li>
                                 </ul>
@@ -233,7 +144,7 @@
     <!-- End of Header -->
 
 
-    <main class="main mt-5">
+    <main class="main mt-5" style="padding: 20px;">
         <div class="uk-slider-container-offset" uk-slider>
 
             <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
@@ -330,7 +241,63 @@
 <!-- End of Scroll Top -->
 
 <!-- Start of Mobile Menu -->
-<?php include('include/mobile.php'); ?>
+<div class="mobile-menu-wrapper">
+    <div class="mobile-menu-overlay"></div>
+    <!-- End of .mobile-menu-overlay -->
+
+    <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+    <!-- End of .mobile-menu-close -->
+
+    <div class="mobile-menu-container scrollable">
+        <!-- End of Search Form -->
+        <div class="tab">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a href="#main-menu" class="nav-link active">Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#categories" class="nav-link">Categories</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="main-menu">
+                <ul class="mobile-menu">
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="categories">
+                <ul class="mobile-menu">
+                    <li>
+                        <a href="#">
+                            Lorem Ipsum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Lorem Ipsum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Lorem Ipsum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Lorem Ipsum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Lorem Ipsum
+                        </a>
+                    </li>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End of Mobile Menu -->
 
 
