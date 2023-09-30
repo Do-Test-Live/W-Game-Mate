@@ -15034,7 +15034,7 @@ body .product-popup {
 }
 .mobile-menu-container .nav-item.show .nav-link,
 .mobile-menu-container .nav-item .nav-link.active {
-  color: #7705e7;
+  color: #fff;
   border-color: #7705e7;
 }
 .mobile-menu-container.scrollable::-webkit-scrollbar-thumb, .mobile-menu-container .sidebar-content::-webkit-scrollbar-thumb {
