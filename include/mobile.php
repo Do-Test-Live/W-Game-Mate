@@ -28,11 +28,6 @@
             <div class="tab-pane active" id="main-menu">
                 <ul class="mobile-menu">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Vendor</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li><a href="#">Elements</a></li>
                 </ul>
             </div>
             <div class="tab-pane" id="categories">

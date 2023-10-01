@@ -7,27 +7,12 @@
                 <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
                 </a>
                 <a href="index.php" class="logo ml-lg-0">
-                    <img src="assets/img/logo.png" alt="logo" width="145" height="45"/>
+                    <img src="assets/img/logo.png" alt="logo" width="250" height="45"/>
                 </a>
                 <nav class="main-nav">
                     <ul class="menu">
                         <li class="active">
                             <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Shop</a>
-                        </li>
-                        <li>
-                            <a href="#">Vendor</a>
-                        </li>
-                        <li>
-                            <a href="#">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#">Pages</a>
-                        </li>
-                        <li>
-                            <a href="#">Elements</a>
                         </li>
                     </ul>
                 </nav>

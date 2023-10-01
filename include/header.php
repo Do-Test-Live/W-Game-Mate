@@ -14,21 +14,6 @@
                         <li class="active">
                             <a href="#">Home</a>
                         </li>
-                        <li>
-                            <a href="#">Shop</a>
-                        </li>
-                        <li>
-                            <a href="#">Vendor</a>
-                        </li>
-                        <li>
-                            <a href="#">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#">Pages</a>
-                        </li>
-                        <li>
-                            <a href="#">Elements</a>
-                        </li>
                     </ul>
                 </nav>
             </div>

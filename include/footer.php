@@ -10,9 +10,9 @@
                             <i class="w-icon-envelop3"></i>
                         </div>
                         <div class="icon-box-content">
-                            <h4 class="icon-box-title text-white text-uppercase font-weight-bold">Subscribe To
-                                Our Newsletter</h4>
-                            <p class="text-white">Get all the latest information on Events, Sales and Offers.
+                            <h4 class="icon-box-title text-white text-uppercase font-weight-bold">訂閱至
+                                我們的通訊</h4>
+                            <p class="text-white">獲取有關活動、銷售和優惠的最新信息。
                             </p>
                         </div>
                     </div>
@@ -21,8 +21,8 @@
                     <form action="#" method="get"
                           class="input-wrapper input-wrapper-inline input-wrapper-rounded">
                         <input type="email" class="form-control mr-2 bg-white pl-3" name="email" id="email"
-                               placeholder="Your E-mail Address" required/>
-                        <button class="btn btn-primary btn-rounded" type="submit">Subscribe
+                               placeholder="電子郵件地址" required/>
+                        <button class="btn btn-primary btn-rounded" type="submit">訂閱
                             <i class="w-icon-long-arrow-right"></i>
                         </button>
                     </form>
@@ -36,14 +36,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="widget widget-about mt-0 mb-4">
                         <a href="demo14.html" class="logo-footer">
-                            <img src="assets/img/logo.png" alt="logo-footer" width="145"
+                            <img src="assets/img/logo.png" alt="logo-footer" width="250"
                                  height="45"/>
                         </a>
                         <div class="widget-body">
-                            <p class="widget-about-title">Got Question? Call us 24/7</p>
+                            <p class="widget-about-title">有問題嗎？隨時致電給我們。24/7 不打烊。</p>
                             <a href="tel:18005707777" class="widget-about-call">(852) 5931 6339</a>
                             <p class="widget-about-desc">
-                                Register now to get updates on pronot get up icons & coupons ster now toon.
+                                立即註冊以獲得更新。
                             </p>
                             <div class="social-icons social-icons-colored">
                                 <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
@@ -55,42 +55,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <div class="widget">
                         <h3 class="widget-title">Company</h3>
                         <ul class="widget-body">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="#">Team Member</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="#">Affilate</a></li>
-                            <li><a href="#">Order History</a></li>
+                            <li><a href="about-us.html">關於我們</a></li>
+                            <li><a href="contact-us.html">聯絡我們</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <div class="widget">
                         <h4 class="widget-title">My Account</h4>
                         <ul class="widget-body">
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="login.html">Sign In</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="wishlist.html">My Wishlist</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4>
-                        <ul class="widget-body">
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Product Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Term and Conditions</a></li>
+                            <li><a href="cart.html">查看購物車</a></li>
+                            <li><a href="login.html">登入</a></li>
+                            <li><a href="wishlist.html">我的願望清單</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +78,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-left">
-                <p class="copyright">Copyright © 2021 Gamemate Store. All Rights Reserved.</p>
+                <p class="copyright">Copyright © 2023 Gamemate Store. All Rights Reserved.</p>
             </div>
             <div class="footer-right">
                 <span class="payment-label mr-lg-8">We're using safe payment for</span>
