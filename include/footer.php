@@ -40,22 +40,17 @@
                                  height="45"/>
                         </a>
                         <div class="widget-body">
-                            <p class="widget-about-title">有問題嗎？隨時致電給我們。24/7 不打烊。</p>
+                            <p class="widget-about-title">有問題嗎？隨時致電給我們。</p>
                             <a href="tel:18005707777" class="widget-about-call">(852) 5931 6339</a>
-                            <p class="widget-about-desc">
-                                立即註冊以獲得更新。
-                            </p>
                             <div class="social-icons social-icons-colored">
-                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
                                 <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
+                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
                                 <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+               <!-- <div class="col-lg-4 col-sm-6">
                     <div class="widget">
                         <h3 class="widget-title">Company</h3>
                         <ul class="widget-body">
@@ -63,8 +58,8 @@
                             <li><a href="contact-us.html">聯絡我們</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
+                </div>-->
+               <!-- <div class="col-lg-4 col-sm-6">
                     <div class="widget">
                         <h4 class="widget-title">My Account</h4>
                         <ul class="widget-body">
@@ -73,7 +68,7 @@
                             <li><a href="wishlist.html">我的願望清單</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="footer-bottom">

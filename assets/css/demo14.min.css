@@ -13703,6 +13703,7 @@ body .product-popup {
   color: #999;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+  margin: 10px;
 }
 .account .w-icon-account {
   color: white;
